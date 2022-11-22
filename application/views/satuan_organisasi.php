@@ -93,29 +93,37 @@
                                                                                     <h5>Satuan Organisasi</h5>
                                                                                     <p class="card-title-desc">Isi informasi satuan organisasi</p>
                                                                                 </div>
-                                                                                <form>
+                                                                                <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertorganisasi') ?>" novalidate>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Kode Satuan Organisasi</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
+                                                                                                <label for="validationTooltip03">Kode Satuan Organisasi</label>
+                                                                                                <input type="text" class="form-control" name="kodeorganisasi" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi kode satuan organisasi yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Nama Satuan Organisasi</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
+                                                                                                <label for="validationTooltip03">Nama Satuan Organisasi</label>
+                                                                                                <input type="text" class="form-control" name="namaorganisasi" placeholder="Isi kode satuan organisasi" style="text-transform: capitalize;" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi nama satuan organisasi yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+                                                                                        
                                                                                     </div>
 
                                                                                   
-                                                                                </form>
+                                                                                
                                                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         
-                                                                                        <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".confirmModal">Save
-                                                                                                Changes</a></li>
+                                                                                        <li class="float-end"><input type="submit" value="Simpan" class="btn btn-primary" /></li>
                                                                                 </ul>
+                                                                                </form>
                                                                           
                                                                         </div>
                                                                     </div>
@@ -147,11 +155,11 @@
 
 
                                     <tbody>
-                                       
+                                        <?php $no = 0; foreach ($organisasi as $data) {?>
                                         <tr>
-                                            <td width="50">1</td>
-                                            <td>SPI</td>
-                                            <td>Satuan Pengawas Intern</td>
+                                            <td width="50"><?php echo $no=$no+1; ?></td>
+                                            <td><?php echo $data->kodeorganisasi; ?></td>
+                                            <td><?php echo $data->namaorganisasi; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
                                             <td width="50"> 
                                                 <div>
@@ -162,6 +170,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                         
                                     </tbody>
                                 </table>
@@ -219,6 +228,9 @@
 <!-- form wizard init -->
 <script src="<?php echo base_url('assets/js/pages/form-wizard.init.js') ?>"></script>
 
+
+<!-- form validation -->
+<script src="<?php echo base_url('assets/js/pages/form-validation.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
 

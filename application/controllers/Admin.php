@@ -10,6 +10,8 @@ class Admin extends CI_Controller {
 		$this->load->model('dashboard_model');
 		$this->load->model('data_karyawan_model');
 		$this->load->model('data_renumerasi_model');
+		$this->load->model('data_organisasi_model');
+		$this->load->model('data_bidang_model');
 		$this->load->helper(['url', 'language']);
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -28,17 +30,45 @@ class Admin extends CI_Controller {
 		$this->load->view('matrik_grade', $this->data);
 	}
 
+
 	//ORGANISASI
 	public function satuan_organisasi()
 	{
-		$this->load->view('satuan_organisasi');
+		$this->data['organisasi'] = $this->data_organisasi_model->get_organisasi();
+		$this->load->view('satuan_organisasi', $this->data);
 	}
 
+	public function insertorganisasi()
+	{
+		$data = array(
+				'kodeorganisasi' => strtoupper($this->input->post('kodeorganisasi')),
+				'namaorganisasi' => ucwords($this->input->post('namaorganisasi'))
+			);
+		$this->data_organisasi_model->insertorganisasi($data);
+		redirect('admin/satuan_organisasi', 'refresh');
+
+		
+	}
+
+
+
+
+	//BIDANG
+	public function bidang()
+	{
+		$this->data['bidang'] = $this->data_bidang_model->get_bidang();
+		$this->load->view('bidang_organisasi', $this->data);
+	}
+
+
+	//BAGIAN
 	public function bagian()
 	{
 		$this->load->view('bagian_organisasi');
 	}
 
+
+	//JABATAN
 	public function jabatan()
 	{
 		$this->load->view('jabatan_organisasi');
@@ -71,7 +101,7 @@ class Admin extends CI_Controller {
 	{
 		var_dump($_POST);
 		exit();
-		
+
 		$this->validasi_form();
 		if($this->form_validation->run() === FALSE)
 		{

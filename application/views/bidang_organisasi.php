@@ -38,12 +38,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">Bagian Organisasi</h4>
+                            <h4 class="mb-sm-0 font-size-18">Bidang Organisasi</h4>
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Struktur Organisasi</a></li>
-                                    <li class="breadcrumb-item active">Bagian Organisasi</li>
+                                    <li class="breadcrumb-item active">Bidang Organisasi</li>
                                 </ol>
                             </div>
 
@@ -56,7 +56,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <button type="button" class="btn btn-primary waves-effect btn-label waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Tambah Bagian Organisasi</button>
+                                <button type="button" class="btn btn-primary waves-effect btn-label waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Tambah Bidang Organisasi</button>
                                 
                             </div>
                             <div>
@@ -65,7 +65,7 @@
                                         <div class="modal-dialog modal-m">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myExtraLargeModalLabel">Form Input Data Bagian Organisasi</h5>
+                                                    <h5 class="modal-title" id="myExtraLargeModalLabel">Form Input Data Bidang Organisasi</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -90,35 +90,29 @@
                                                                         <div class="tab-content twitter-bs-wizard-tab-content">
                                                                             <div class="tab-pane" id="progress-grade">
                                                                                 <div class="text-center mb-4">
-                                                                                    <h5>Bagian Organisasi</h5>
-                                                                                    <p class="card-title-desc">Isi informasi bagian organisasi</p>
+                                                                                    <h5>Bidang Organisasi</h5>
+                                                                                    <p class="card-title-desc">Isi informasi bidang organisasi</p>
                                                                                 </div>
                                                                                 <form>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Kode Bagian</label>
+                                                                                                <label for="progresspill-firstname-input">Kode Bidang</label>
                                                                                                 <input type="text" class="form-control" id="progresspill-firstname-input">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Nama Bagian</label>
+                                                                                                <label for="progresspill-lastname-input">Nama Bidang</label>
                                                                                                 <input type="text" class="form-control" id="progresspill-lastname-input">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
-                                                                                        <div class="col-lg-6">
+                                                                                        <div class="col-lg-12">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-firstname-input">Satuan Organisasi</label>
                                                                                                 <input type="text" class="form-control" id="progresspill-firstname-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Induk Bagian</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -152,20 +146,23 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
-                                            <th>Nama Organisasi</th>
-                                            <th>status</th>
+                                            <th>Kode Bidang</th>
+                                            <th>Nama Bidang</th>
+                                            <th>Satuan Organisasi</th>
+                                            <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                       <?php $no = 0; foreach ($organisasi as $data) {?>
+                                       
+                                        <?php $no = 0; foreach ($bidang as $data) {?>
                                         <tr>
                                             <td width="50"><?php echo $no=$no+1; ?></td>
-                                            <td><?php echo $data->kodeorganisasi; ?></td>
-                                            <td><?php echo $data->namaorganisasi; ?></td>
+                                            <td><?php echo $data->kodebidang; ?></td>
+                                            <td><?php echo $data->namabidang; ?></td>
+                                            <td><?php echo $data->namabidang; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
                                             <td width="50"> 
                                                 <div>
