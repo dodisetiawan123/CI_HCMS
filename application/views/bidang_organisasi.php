@@ -15,6 +15,9 @@
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.css') ?>">
 
+    <!-- choices css -->
+    <link href="<?php echo base_url('assets/libs/choices.js/public/assets/styles/choices.min.css') ?>" rel="stylesheet" type="text/css" />
+
     <?php include 'layouts/head-style.php'; ?>
 
 </head>
@@ -61,7 +64,7 @@
                             </div>
                             <div>
                                     <!--  Extra Large modal example -->
-                                    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                    <div class="modal fade bs-example-modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-m">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -93,37 +96,52 @@
                                                                                     <h5>Bidang Organisasi</h5>
                                                                                     <p class="card-title-desc">Isi informasi bidang organisasi</p>
                                                                                 </div>
-                                                                                <form>
+                                                                                <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertbidang') ?>" novalidate>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Kode Bidang</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
+                                                                                                <label for="validationTooltip03">Kode Bidang</label>
+                                                                                                <input type="text" class="form-control" name="kodebidang" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi kode bidang organisasi yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Nama Bidang</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
+                                                                                                <label for="validationTooltip03">Nama Bidang</label>
+                                                                                                <input type="text" class="form-control" name="namabidang" placeholder="Nama bidang" style="text-transform: capitalize" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi nama bidang organisasi yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
-                                                                                        <div class="col-lg-12">
+                                                                                       <div class="col-lg-12">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Satuan Organisasi</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
-                                                                                            </div>
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Organisasi</label>
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih Organisasi" required>
+                                                                                                        <option value="">Pilih Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
+                                                                                                        <?php } ?>
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
                                                                                         </div>
                                                                                     </div>
 
                                                                                   
-                                                                                </form>
+                                                                                
                                                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         
-                                                                                        <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".confirmModal">Save
-                                                                                                Changes</a></li>
+                                                                                        <li class="float-end"><input type="submit" value="Simpan" class="btn btn-primary" /></li>
                                                                                 </ul>
+                                                                                </form>
                                                                           
                                                                         </div>
                                                                     </div>
@@ -162,7 +180,7 @@
                                             <td width="50"><?php echo $no=$no+1; ?></td>
                                             <td><?php echo $data->kodebidang; ?></td>
                                             <td><?php echo $data->namabidang; ?></td>
-                                            <td><?php echo $data->namabidang; ?></td>
+                                            <td><?php echo $data->namaorganisasi; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
                                             <td width="50"> 
                                                 <div>
@@ -228,9 +246,17 @@
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.js') ?>"></script>
 
+
+<!-- choices js -->
+<script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
+
+<!-- init js -->
+<script src="<?php echo base_url('assets/js/pages/form-advanced-bidang.init.js') ?>"></script>
 <!-- form wizard init -->
 <script src="<?php echo base_url('assets/js/pages/form-wizard.init.js') ?>"></script>
 
+<!-- form validation -->
+<script src="<?php echo base_url('assets/js/pages/form-validation.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
 

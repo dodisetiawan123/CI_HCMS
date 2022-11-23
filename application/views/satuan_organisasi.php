@@ -61,7 +61,7 @@
                             </div>
                             <div>
                                     <!--  Extra Large modal example -->
-                                    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                    <div class="modal fade bs-example-modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-m">
                                             <div class="modal-content">
                                                 <div class="modal-header">

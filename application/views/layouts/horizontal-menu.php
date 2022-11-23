@@ -254,7 +254,6 @@
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                             <a href="<?php echo site_url('admin/satuan_organisasi') ?>" class="dropdown-item" data-key="t-calendar">Satuan Organisasi</a>
-                            <a href="<?php echo site_url('admin/bidang') ?>" class="dropdown-item" data-key="t-chat">Bidang</a>
                             <a href="<?php echo site_url('admin/bagian') ?>" class="dropdown-item" data-key="t-chat">Bagian</a>
                             <a href="<?php echo site_url('admin/jabatan') ?>" class="dropdown-item" data-key="t-chat">Jabatan</a>
                             <a href="<?php echo site_url('admin/struktur') ?>" class="dropdown-item" data-key="t-chat">Struktur</a>
@@ -311,7 +310,6 @@
 
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Karyawan Organik</a>
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Satuan Organisasi</a>
-                            <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Bidang</a>
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Bagian</a>
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">jabatan</a>
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Struktur</a>

@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
 		$this->load->model('data_renumerasi_model');
 		$this->load->model('data_organisasi_model');
 		$this->load->model('data_bidang_model');
+		$this->load->model('data_bagian_model');
 		$this->load->helper(['url', 'language']);
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -57,14 +58,47 @@ class Admin extends CI_Controller {
 	public function bidang()
 	{
 		$this->data['bidang'] = $this->data_bidang_model->get_bidang();
+		$this->data['organisasi'] = $this->data_bidang_model->get_organisasi();
 		$this->load->view('bidang_organisasi', $this->data);
 	}
+
+	public function insertbidang()
+	{
+		$data = array(
+				'kodebidang' => strtoupper($this->input->post('kodebidang')),
+				'namabidang' => ucwords($this->input->post('namabidang')),
+				'idmd_organisasi' => $this->input->post('idmd_organisasi')
+			);
+
+		$this->data_bidang_model->insertbidang($data);
+		redirect('admin/bidang', 'refresh');
+
+		
+	}
+
+
 
 
 	//BAGIAN
 	public function bagian()
 	{
-		$this->load->view('bagian_organisasi');
+		$this->data['bagian'] = $this->data_bagian_model->get_bagian();
+		$this->data['bidang'] = $this->data_bagian_model->get_bidang();
+		$this->load->view('bagian_organisasi', $this->data);
+	}
+
+	public function insertbagian()
+	{
+		$data = array(
+				'kodebagian' => strtoupper($this->input->post('kodebagian')),
+				'namabagian' => ucwords($this->input->post('namabagian')),
+				'idmd_bidang' => $this->input->post('idmd_bidang')
+			);
+
+		$this->data_bagian_model->insertbagian($data);
+		redirect('admin/bagian', 'refresh');
+
+		
 	}
 
 
