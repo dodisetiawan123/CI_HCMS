@@ -83,6 +83,7 @@ class Admin extends CI_Controller {
 	public function bagian()
 	{
 		$this->data['bagian'] = $this->data_bagian_model->get_bagian();
+		$this->data['organisasi'] = $this->data_bagian_model->get_organisasi();
 		$this->data['bidang'] = $this->data_bagian_model->get_bidang();
 		$this->load->view('bagian_organisasi', $this->data);
 	}

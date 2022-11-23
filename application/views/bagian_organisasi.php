@@ -120,12 +120,28 @@
                                                                                     <div class="row">
                                                                                        <div class="col-lg-12">
                                                                                             <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Bidang</label>
-                                                                                                    <select class="form-control" name="idmd_bidang" id="idmd_organisasi" placeholder="Pilih Organisasi" required>
-                                                                                                        <option value="">Pilih Bidang Organisasi</option>
-                                                                                                        <?php foreach ($bidang as $data) {?>
-                                                                                                        <option value="<?php echo $data->idmd_bidang; ?>"><?php echo $data->kodebidang.' - '.$data->namabidang; ?></option>
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Satuan Organisasi</label>
+                                                                                                    <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih Satuan Organisasi" required>
+                                                                                                        <option value="">Pilih Satuan Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
                                                                                                         <?php } ?>
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                       <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Bidang Organisasi</label>
+                                                                                                    <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih Bidang Organisasi" required>
+                                                                                                        <option value="">Pilih Bidang Organisasi</option>
+                                                                                                        
 
                                                                                                     </select>
                                                                                                     <div class="invalid-feedback">
@@ -167,6 +183,7 @@
                                             <th>Kode Bagian</th>
                                             <th>Nama Bagian</th>
                                             <th>Bidang Organisasi</th>
+                                            <th>Satuan Organisasi</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -180,6 +197,7 @@
                                             <td><?php echo $data->kodebagian; ?></td>
                                             <td><?php echo $data->namabagian; ?></td>
                                             <td><?php echo $data->namabidang; ?></td>
+                                            <td><?php echo $data->namaorganisasi; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
                                             <td width="50"> 
                                                 <div>
@@ -249,7 +267,7 @@
 <script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
 
 <!-- init js -->
-<script src="<?php echo base_url('assets/js/pages/form-advanced-bidang.init.js') ?>"></script>
+<script src="<?php echo base_url('assets/js/pages/form-advanced-bagian.init.js') ?>"></script>
 
 <!-- form wizard init -->
 <script src="<?php echo base_url('assets/js/pages/form-wizard.init.js') ?>"></script>
@@ -258,6 +276,31 @@
 <script src="<?php echo base_url('assets/js/pages/form-validation.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+
+<script type="text/javascript">
+    $(function () {
+    var url = '<?php echo site_url('data/getbidang') ?>';
+    $('#idmd_organisasi').change(function () {
+        var id = $('#idmd_organisasi').find('option:selected').val();
+        $('#NmSatminkal').val(id);
+        $.ajax({
+            url: url,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                var html = '';
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    html += '<option></option><option value=' + data[i].namabidang + '>' + data[i].namabidang + '</option>';
+                }
+                $('#idmd_bidang').html(html);
+            }
+        });
+    });
+});
+</script>
 
 </body>
 

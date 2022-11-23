@@ -146,8 +146,8 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
-                                            <th>Nama</th>
+                                            <th>Kode Organisasi</th>
+                                            <th>Nama Organisasi</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
