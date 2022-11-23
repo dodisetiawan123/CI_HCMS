@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Nov 2022 pada 16.39
+-- Waktu pembuatan: 23 Nov 2022 pada 11.14
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 7.3.33
 
@@ -30,8 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `md_bagian` (
   `idmd_bagian` int(11) NOT NULL,
   `kodebagian` varchar(100) DEFAULT NULL,
-  `namabagian` varchar(100) DEFAULT NULL
+  `namabagian` varchar(100) DEFAULT NULL,
+  `idmd_bidang` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `md_bagian`
+--
+
+INSERT INTO `md_bagian` (`idmd_bagian`, `kodebagian`, `namabagian`, `idmd_bidang`) VALUES
+(3, 'SHE', 'Bidang SHE', 2);
 
 -- --------------------------------------------------------
 
@@ -42,8 +50,17 @@ CREATE TABLE `md_bagian` (
 CREATE TABLE `md_bidang` (
   `idmd_bidang` int(11) NOT NULL,
   `kodebidang` varchar(100) DEFAULT NULL,
-  `namabidang` varchar(100) DEFAULT NULL
+  `namabidang` varchar(100) DEFAULT NULL,
+  `idmd_organisasi` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `md_bidang`
+--
+
+INSERT INTO `md_bidang` (`idmd_bidang`, `kodebidang`, `namabidang`, `idmd_organisasi`) VALUES
+(1, 'BPS', 'Bidang Pengembangan Sistem', 13),
+(2, 'SHE', 'Bidang SHE', 13);
 
 -- --------------------------------------------------------
 
@@ -66,7 +83,8 @@ CREATE TABLE `md_grade` (
 CREATE TABLE `md_jabatan` (
   `idmd_jabatan` int(11) NOT NULL,
   `kodejabatan` varchar(100) DEFAULT NULL,
-  `namajabatan` varchar(100) DEFAULT NULL
+  `namajabatan` varchar(100) DEFAULT NULL,
+  `idmd_bagian` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -148,38 +166,37 @@ INSERT INTO `md_marital` (`idmd_marital`, `status`, `deskripsi`) VALUES
 CREATE TABLE `md_organisasi` (
   `idmd_organisasi` int(11) NOT NULL,
   `kodeorganisasi` varchar(100) DEFAULT NULL,
-  `namaorganisasi` varchar(100) DEFAULT NULL,
-  `tanggalberlaku` date DEFAULT NULL
+  `namaorganisasi` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `md_organisasi`
 --
 
-INSERT INTO `md_organisasi` (`idmd_organisasi`, `kodeorganisasi`, `namaorganisasi`, `tanggalberlaku`) VALUES
-(1, 'DUT', 'Direktorat Utama', '2022-07-11'),
-(2, 'DKS', 'Direktorat Keuangan, SDM & MR', '2022-07-11'),
-(3, 'DOP', 'Direktorat Operasi', '2022-07-11'),
-(4, 'DPS', 'Direktorat Pemasaran', '2022-07-11'),
-(5, 'SKP', 'Sekretariat Perusahaan', '2022-07-11'),
-(6, 'SPI', 'Satuan Pengawasan Intern', '2022-07-11'),
-(7, 'BEJ', 'Biro Enjiniring', '2022-07-11'),
-(8, 'BHC', 'Biro Human Campital', '2022-07-11'),
-(9, 'BHM', 'Biro Hukum', '2022-07-11'),
-(10, 'BKA', 'Biro Keuangan & Akuntansi', '2022-07-11'),
-(11, 'BPU', 'Biro Pengembangan Usaha', '2022-07-11'),
-(12, 'BSC', 'Biro Manajemen Supply Chain', '2022-07-11'),
-(13, 'BSQ', 'Biro Sistem, Mutu & K3LH', '2022-07-11'),
-(14, 'DKP', 'Divisi Industri Komponen & Permesinan', '2022-07-11'),
-(15, 'DGA', 'Divisi Industri Gula & Agro', '2022-07-11'),
-(16, 'DMG', 'Divisi Minyak & Gas', '2022-07-11'),
-(17, 'DSA', 'Divisi Sumber Daya Air', '2022-07-11'),
-(18, 'DPM', 'Divisi Pembangkit', '2022-07-11'),
-(19, 'FOU', 'Pabrik Pengecoran', '2022-07-11'),
-(20, 'PPI', 'Pabrik Peralatan Industri', '2022-07-11'),
-(21, 'TGL', 'Pabrik Hidromekanikal Tegal', '2022-07-11'),
-(22, 'PKT', 'Pabrik Komponen Turbin', '2022-07-11'),
-(23, 'MDN', 'Pabrik Konstruksi Baja Medan', '2022-07-11');
+INSERT INTO `md_organisasi` (`idmd_organisasi`, `kodeorganisasi`, `namaorganisasi`) VALUES
+(1, 'DUT', 'Direktorat Utama'),
+(2, 'DKS', 'Direktorat Keuangan, SDM & MR'),
+(3, 'DOP', 'Direktorat Operasi'),
+(4, 'DPS', 'Direktorat Pemasaran'),
+(5, 'SKP', 'Sekretariat Perusahaan'),
+(6, 'SPI', 'Satuan Pengawasan Intern'),
+(7, 'BEJ', 'Biro Enjiniring'),
+(8, 'BHC', 'Biro Human Campital'),
+(9, 'BHM', 'Biro Hukum'),
+(10, 'BKA', 'Biro Keuangan & Akuntansi'),
+(11, 'BPU', 'Biro Pengembangan Usaha'),
+(12, 'BSC', 'Biro Manajemen Supply Chain'),
+(13, 'BSQ', 'Biro Sistem, Mutu & K3LH'),
+(14, 'DKP', 'Divisi Industri Komponen & Permesinan'),
+(15, 'DGA', 'Divisi Industri Gula & Agro'),
+(16, 'DMG', 'Divisi Minyak & Gas'),
+(17, 'DSA', 'Divisi Sumber Daya Air'),
+(18, 'DPM', 'Divisi Pembangkit'),
+(19, 'FOU', 'Pabrik Pengecoran'),
+(20, 'PPI', 'Pabrik Peralatan Industri'),
+(21, 'TGL', 'Pabrik Hidromekanikal Tegal'),
+(22, 'PKT', 'Pabrik Komponen Turbin'),
+(23, 'MDN', 'Pabrik Konstruksi Baja Medan');
 
 -- --------------------------------------------------------
 
@@ -332,13 +349,13 @@ ALTER TABLE `mk_renumerasi`
 -- AUTO_INCREMENT untuk tabel `md_bagian`
 --
 ALTER TABLE `md_bagian`
-  MODIFY `idmd_bagian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idmd_bagian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `md_bidang`
 --
 ALTER TABLE `md_bidang`
-  MODIFY `idmd_bidang` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idmd_bidang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `md_grade`
@@ -368,7 +385,7 @@ ALTER TABLE `md_marital`
 -- AUTO_INCREMENT untuk tabel `md_organisasi`
 --
 ALTER TABLE `md_organisasi`
-  MODIFY `idmd_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `idmd_organisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT untuk tabel `mk_jabatan`
