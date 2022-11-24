@@ -8,18 +8,17 @@
     <!-- DataTables -->
     <link href="<?php echo base_url('assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css') ?>" />
     <link href="<?php echo base_url('assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css') ?>" />
-
     <!-- Responsive datatable examples -->
     <link href="<?php echo base_url('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css') ?>" />
-
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.css') ?>">
-
     <!-- choices css -->
     <link href="<?php echo base_url('assets/libs/choices.js/public/assets/styles/choices.min.css') ?>" rel="stylesheet" type="text/css" />
-
     <!-- datepicker css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/flatpickr/flatpickr.min.css') ?>">
+    <!-- Sweet Alert-->
+    <link href="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css" />
+
 
     <?php include 'layouts/head-style.php'; ?>
 
@@ -719,7 +718,9 @@
                                     </div><!-- /.modal -->
                                 </div>
                             <div class="card-body">
-
+<td class="text-center">
+                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" id="sa-position">Click me</button>
+                                                </td>
                                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                     <thead>
                                         <tr>
@@ -814,6 +815,9 @@
 <!-- choices js -->
 <script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
 
+<!-- Sweet Alerts js -->
+<script src="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.js') ?>"></script>
+
 <!-- Datatable init js -->
 <script src="<?php echo base_url('assets/js/pages/datatables.init.js') ?>"></script>
 
@@ -825,6 +829,9 @@
 
 <!-- init js -->
 <script src="<?php echo base_url('assets/js/pages/form-advanced.init.js') ?>"></script>
+
+<!-- Sweet alert init js-->
+<script src="<?php echo base_url('assets/js/pages/sweetalert.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
 

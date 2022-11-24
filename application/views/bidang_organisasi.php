@@ -160,7 +160,7 @@
                                     </div><!-- /.modal -->
                                 </div>
                             <div class="card-body">
-
+                                <?php echo $this->session->flashdata('done');  ?>
                                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                     <thead>
                                         <tr>
