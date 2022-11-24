@@ -15,6 +15,9 @@
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.css') ?>">
 
+    <!-- choices css -->
+    <link href="<?php echo base_url('assets/libs/choices.js/public/assets/styles/choices.min.css') ?>" rel="stylesheet" type="text/css" />
+
     <?php include 'layouts/head-style.php'; ?>
 
 </head>
@@ -93,44 +96,84 @@
                                                                                     <h5>Jabatan Organisasi</h5>
                                                                                     <p class="card-title-desc">Isi informasi jabatan organisasi</p>
                                                                                 </div>
-                                                                                <form>
+                                                                                <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertjabatan') ?>" novalidate>
+                                                                                    <div class="row">
+                                                                                       <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Satuan Organisasi</label>
+                                                                                                    <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih Satuan Organisasi" required>
+                                                                                                        <option value="">Pilih Satuan Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
+                                                                                                        <?php } ?>
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                       <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Bidang</label>
+                                                                                                    <input id="NmBidang" name="NmBidang" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih Bidang Organisasi" required>
+                                                                                                       <option value="">Pilih Bidang</option>
+                                                                                                        
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                       <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Bagian</label>
+                                                                                                    <select class="form-control" name="idmd_bagian" id="idmd_bagian" placeholder="Pilih Bagian" required>
+                                                                                                       <option value="">Pilih Bagian</option>
+                                                                                                        
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Kode Jabatan</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
+                                                                                                <label for="validationTooltip03">Kode Jabatan</label>
+                                                                                                <input type="text" class="form-control" name="kodejabatan" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi kode jabatan yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Nama Jabatan</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
+                                                                                                <label for="validationTooltip03">Nama Jabatan</label>
+                                                                                                <input type="text" class="form-control" name="namajabatan" placeholder="Nama jabatan" style="text-transform: capitalize" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi nama jabatan organisasi yang valid.
+                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                     <div class="row">
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Point Jabatan</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">Kategori</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
 
                                                                                   
-                                                                                </form>
+                                                                                
                                                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         
-                                                                                        <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".confirmModal">Save
-                                                                                                Changes</a></li>
+                                                                                        <li class="float-end"><input type="submit" value="Simpan" class="btn btn-primary" /></li>
                                                                                 </ul>
+                                                                                </form>
                                                                           
                                                                         </div>
                                                                     </div>
@@ -153,20 +196,26 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode</th>
-                                            <th>Nama</th>
+                                            <th>Kode Jabatan</th>
+                                            <th>Nama Jabatan</th>
+                                            <th>Nama Bagian</th>
+                                            <th>Nama Bidang</th>
+                                            <th>Nama Organisasi</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
 
 
-                                    <tbody>
-                                       
+                                     <tbody>
+                                       <?php $no = 0; foreach ($jabatan as $data) {?>
                                         <tr>
-                                            <td width="50">1</td>
-                                            <td>SPI</td>
-                                            <td>Satuan Pengawas Intern</td>
+                                            <td width="50"><?php echo $no=$no+1; ?></td>
+                                            <td><?php echo $data->kodejabatan; ?></td>
+                                            <td><?php echo $data->namajabatan; ?></td>
+                                            <td><?php echo $data->namabagian; ?></td>
+                                            <td><?php echo $data->namabidang; ?></td>
+                                            <td><?php echo $data->namaorganisasi; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
                                             <td width="50"> 
                                                 <div>
@@ -177,6 +226,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                         
                                     </tbody>
                                 </table>
@@ -231,11 +281,104 @@
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.js') ?>"></script>
 
+<script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
+
+<!-- init js -->
+<script src="<?php echo base_url('assets/js/pages/form-advanced-jabatan.init.js') ?>"></script>
+
 <!-- form wizard init -->
 <script src="<?php echo base_url('assets/js/pages/form-wizard.init.js') ?>"></script>
 
+<!-- form validation -->
+<script src="<?php echo base_url('assets/js/pages/form-validation.init.js') ?>"></script>
+
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+
+<script type="text/javascript">
+    $(function () {
+    const bidang = new Choices('#idmd_bidang', {
+    shouldSort: false,placeholder: true
+    });
+    
+    const bagian = new Choices('#idmd_bagian', {
+    shouldSort: false,placeholder: true
+    });
+
+
+    var urlbidang = '<?php echo site_url('data/getbidang') ?>';
+    var urlbagian = '<?php echo site_url('data/getbagian') ?>';
+
+    $('#idmd_organisasi').change(function () {
+        bidang.clearChoices();
+        bagian.clearChoices();
+        var id = $('#idmd_organisasi').find('option:selected').val();
+        $('#NmSatminkal').val(id);
+        $.ajax({
+            url: urlbidang,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                bidang.setChoices([{
+                          value: '',
+                          label: 'Pilih bidang',
+                          selected:true,
+                          disabled: true
+                        }]);
+                 bagian.setChoices([{
+                          value: '',
+                          label: 'Pilih bagian',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    bidang.setChoices([{
+                          value: data[i].idmd_bidang,
+                          label: data[i].kodebidang+' - '+data[i].namabidang
+                        }]);
+
+
+
+                }
+
+            }
+        });
+    });
+
+    $('#idmd_bidang').change(function () {
+        bagian.clearChoices();
+        var id = $('#idmd_bidang').find('option:selected').val();
+        $('#NmBidang').val(id);
+        $.ajax({
+            url: urlbagian,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                bagian.setChoices([{
+                          value: '',
+                          label: 'Pilih bagian',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    bagian.setChoices([{
+                          value: data[i].idmd_bagian,
+                          label: data[i].kodebagian+' - '+data[i].namabagian
+                        }]);
+
+                }
+
+            }
+        });
+    });
+});
+</script>
 
 </body>
 

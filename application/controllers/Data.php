@@ -21,12 +21,12 @@ class Data extends CI_Controller {
 	}
 
 	//Bagian
-	public function GetBagian()
+	public function getbagian()
 	{
 		header('Content-Type:application/json');
 		header('Access-Control-Allow-Origin: *');
 		$id   = $this->input->post('id');
-		$data = $this->db->query("SELECT * FROM MKBagian a INNER JOIN MKSatuanOrganisasi b ON a.SatuanOrganisasi=b.IDSatuanOrganisasi WHERE b.NamaSatuanOrganisasi='$id'")->result();
+		$data = $this->db->query("SELECT * FROM md_bagian WHERE idmd_bidang='$id'")->result();
 		echo json_encode($data);
 	}
 

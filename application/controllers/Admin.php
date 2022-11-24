@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
 		$this->load->model('data_organisasi_model');
 		$this->load->model('data_bidang_model');
 		$this->load->model('data_bagian_model');
+		$this->load->model('data_jabatan_model');
 		$this->load->helper(['url', 'language']);
 		date_default_timezone_set('Asia/Jakarta');
 	}
@@ -84,7 +85,6 @@ class Admin extends CI_Controller {
 	{
 		$this->data['bagian'] = $this->data_bagian_model->get_bagian();
 		$this->data['organisasi'] = $this->data_bagian_model->get_organisasi();
-		$this->data['bidang'] = $this->data_bagian_model->get_bidang();
 		$this->load->view('bagian_organisasi', $this->data);
 	}
 
@@ -106,7 +106,23 @@ class Admin extends CI_Controller {
 	//JABATAN
 	public function jabatan()
 	{
-		$this->load->view('jabatan_organisasi');
+		$this->data['jabatan'] = $this->data_jabatan_model->get_jabatan();
+		$this->data['organisasi'] = $this->data_jabatan_model->get_organisasi();
+		$this->load->view('jabatan_organisasi', $this->data);
+	}
+
+	public function insertjabatan()
+	{
+		$data = array(
+				'kodejabatan' => strtoupper($this->input->post('kodejabatan')),
+				'namajabatan' => ucwords($this->input->post('namajabatan')),
+				'idmd_bagian' => $this->input->post('idmd_bagian')
+			);
+
+		$this->data_jabatan_model->insertjabatan($data);
+		redirect('admin/jabatan', 'refresh');
+
+		
 	}
 
 	public function struktur()

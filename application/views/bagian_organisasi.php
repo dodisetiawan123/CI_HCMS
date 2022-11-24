@@ -98,26 +98,6 @@
                                                                                 </div>
                                                                                  <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertbagian') ?>" novalidate>
                                                                                     <div class="row">
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="validationTooltip03">Kode Bagian</label>
-                                                                                                <input type="text" class="form-control" name="kodebagian" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
-                                                                                                 <div class="invalid-feedback">
-                                                                                                    Isi kode bidang organisasi yang valid.
-                                                                                                 </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="validationTooltip03">Nama Bagian</label>
-                                                                                                <input type="text" class="form-control" name="namabagian" placeholder="Nama bagian" style="text-transform: capitalize" id="validationTooltip03" required>
-                                                                                                 <div class="invalid-feedback">
-                                                                                                    Isi nama bidang organisasi yang valid.
-                                                                                                 </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
                                                                                        <div class="col-lg-12">
                                                                                             <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Pilih Satuan Organisasi</label>
@@ -140,7 +120,7 @@
                                                                                             <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Pilih Bidang Organisasi</label>
                                                                                                     <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih Bidang Organisasi" required>
-                                                                                                        <option value="">Pilih Bidang Organisasi</option>
+                                                                                                       <option value="">Pilih bidang</option>
                                                                                                         
 
                                                                                                     </select>
@@ -150,6 +130,27 @@
                                                                                                 </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-6">
+                                                                                            <div class="mb-3">
+                                                                                                <label for="validationTooltip03">Kode Bagian</label>
+                                                                                                <input type="text" class="form-control" name="kodebagian" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi kode bidang organisasi yang valid.
+                                                                                                 </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-lg-6">
+                                                                                            <div class="mb-3">
+                                                                                                <label for="validationTooltip03">Nama Bagian</label>
+                                                                                                <input type="text" class="form-control" name="namabagian" placeholder="Nama bagian" style="text-transform: capitalize" id="validationTooltip03" required>
+                                                                                                 <div class="invalid-feedback">
+                                                                                                    Isi nama bidang organisasi yang valid.
+                                                                                                 </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    
 
                                                                                   
                                                                                 
@@ -279,8 +280,17 @@
 
 <script type="text/javascript">
     $(function () {
+    const bidang = new Choices('#idmd_bidang', {
+    shouldSort: false,placeholder: true
+
+  });
+
+
+    
+
     var url = '<?php echo site_url('data/getbidang') ?>';
     $('#idmd_organisasi').change(function () {
+        bidang.clearChoices();
         var id = $('#idmd_organisasi').find('option:selected').val();
         $('#NmSatminkal').val(id);
         $.ajax({
@@ -290,12 +300,23 @@
             async: false,
             dataType: 'json',
             success: function (data) {
-                var html = '';
+                bidang.setChoices([{
+                          value: '',
+                          label: 'Pilih bidang',
+                          selected:true,
+                          disabled: true
+                        }]);
                 var i;
                 for (i = 0; i < data.length; i++) {
-                    html += '<option></option><option value=' + data[i].namabidang + '>' + data[i].namabidang + '</option>';
+                    bidang.setChoices([{
+                          value: data[i].idmd_bidang,
+                          label: data[i].kodebidang+' - '+data[i].namabidang
+                        }]);
+
+
+
                 }
-                $('#idmd_bidang').html(html);
+
             }
         });
     });

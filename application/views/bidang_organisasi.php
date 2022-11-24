@@ -98,6 +98,23 @@
                                                                                 </div>
                                                                                 <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertbidang') ?>" novalidate>
                                                                                     <div class="row">
+                                                                                       <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Organisasi</label>
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih Organisasi" required>
+                                                                                                        <option value="">Pilih Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
+                                                                                                        <?php } ?>
+
+                                                                                                    </select>
+                                                                                                    <div class="invalid-feedback">
+                                                                                                        Isi nama organisasi yang valid.
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="validationTooltip03">Kode Bidang</label>
@@ -117,23 +134,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="row">
-                                                                                       <div class="col-lg-12">
-                                                                                            <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Organisasi</label>
-                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih Organisasi" required>
-                                                                                                        <option value="">Pilih Organisasi</option>
-                                                                                                        <?php foreach ($organisasi as $data) {?>
-                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
-                                                                                                        <?php } ?>
-
-                                                                                                    </select>
-                                                                                                    <div class="invalid-feedback">
-                                                                                                        Isi nama organisasi yang valid.
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                
 
                                                                                   
                                                                                 
