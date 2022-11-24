@@ -114,9 +114,8 @@ class Admin extends CI_Controller {
 	public function insertjabatan()
 	{
 		$data = array(
-				'kodejabatan' => strtoupper($this->input->post('kodejabatan')),
 				'namajabatan' => ucwords($this->input->post('namajabatan')),
-				'idmd_bagian' => $this->input->post('idmd_bagian')
+				'idmd_bidang' => $this->input->post('idmd_bidang')
 			);
 
 		$this->data_jabatan_model->insertjabatan($data);
@@ -145,6 +144,9 @@ class Admin extends CI_Controller {
 	public function data_karyawan()
 	{
 		$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+		$this->data['level'] = $this->data_karyawan_model->get_level();
+		$this->data['grade'] = $this->data_karyawan_model->get_grade();
+		$this->data['organisasi'] = $this->data_karyawan_model->get_organisasi();
 		$this->load->view('list_karyawan', $this->data);
 	}
 

@@ -12,10 +12,9 @@ class Data_jabatan_model extends CI_Model {
 
     public function get_jabatan()
     {
-        $this->db->select('idmd_jabatan,kodejabatan,namajabatan,namabagian,namabidang,namaorganisasi');
+        $this->db->select('idmd_jabatan,namajabatan,namabidang,namaorganisasi');
         $this->db->from('md_jabatan');
-        $this->db->join('md_bagian', 'md_bagian.idmd_bagian = md_jabatan.idmd_bagian', 'left' );
-        $this->db->join('md_bidang', 'md_bidang.idmd_bidang = md_bagian.idmd_bidang', 'left' );
+        $this->db->join('md_bidang', 'md_bidang.idmd_bidang = md_jabatan.idmd_bidang', 'left' );
         $this->db->join('md_organisasi', 'md_organisasi.idmd_organisasi = md_bidang.idmd_organisasi', 'left' );
         $query=$this->db->get();
         return $query->result();

@@ -64,7 +64,7 @@
                             </div>
                             <div>
                                     <!--  Extra Large modal example -->
-                                    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                    <div class="modal fade bs-example-modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-m">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -132,31 +132,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
-                                                                                       <div class="col-lg-12">
-                                                                                            <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Pilih Bagian</label>
-                                                                                                    <select class="form-control" name="idmd_bagian" id="idmd_bagian" placeholder="Pilih Bagian" required>
-                                                                                                       <option value="">Pilih Bagian</option>
-                                                                                                        
-
-                                                                                                    </select>
-                                                                                                    <div class="invalid-feedback">
-                                                                                                        Isi nama organisasi yang valid.
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="validationTooltip03">Kode Jabatan</label>
-                                                                                                <input type="text" class="form-control" name="kodejabatan" placeholder="Kode" style="text-transform: uppercase" id="validationTooltip03" required>
-                                                                                                 <div class="invalid-feedback">
-                                                                                                    Isi kode jabatan yang valid.
-                                                                                                 </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
+                                                                                        <div class="col-lg-12">
                                                                                             <div class="mb-3">
                                                                                                 <label for="validationTooltip03">Nama Jabatan</label>
                                                                                                 <input type="text" class="form-control" name="namajabatan" placeholder="Nama jabatan" style="text-transform: capitalize" id="validationTooltip03" required>
@@ -196,9 +172,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode Jabatan</th>
                                             <th>Nama Jabatan</th>
-                                            <th>Nama Bagian</th>
                                             <th>Nama Bidang</th>
                                             <th>Nama Organisasi</th>
                                             <th>Status</th>
@@ -211,9 +185,7 @@
                                        <?php $no = 0; foreach ($jabatan as $data) {?>
                                         <tr>
                                             <td width="50"><?php echo $no=$no+1; ?></td>
-                                            <td><?php echo $data->kodejabatan; ?></td>
                                             <td><?php echo $data->namajabatan; ?></td>
-                                            <td><?php echo $data->namabagian; ?></td>
                                             <td><?php echo $data->namabidang; ?></td>
                                             <td><?php echo $data->namaorganisasi; ?></td>
                                             <td><span class="badge bg-primary">Approved</span></td>
@@ -300,18 +272,12 @@
     const bidang = new Choices('#idmd_bidang', {
     shouldSort: false,placeholder: true
     });
-    
-    const bagian = new Choices('#idmd_bagian', {
-    shouldSort: false,placeholder: true
-    });
 
 
     var urlbidang = '<?php echo site_url('data/getbidang') ?>';
-    var urlbagian = '<?php echo site_url('data/getbagian') ?>';
 
     $('#idmd_organisasi').change(function () {
         bidang.clearChoices();
-        bagian.clearChoices();
         var id = $('#idmd_organisasi').find('option:selected').val();
         $('#NmSatminkal').val(id);
         $.ajax({
@@ -327,12 +293,6 @@
                           selected:true,
                           disabled: true
                         }]);
-                 bagian.setChoices([{
-                          value: '',
-                          label: 'Pilih bagian',
-                          selected:true,
-                          disabled: true
-                        }]);
                 var i;
                 for (i = 0; i < data.length; i++) {
                     bidang.setChoices([{
@@ -341,36 +301,6 @@
                         }]);
 
 
-
-                }
-
-            }
-        });
-    });
-
-    $('#idmd_bidang').change(function () {
-        bagian.clearChoices();
-        var id = $('#idmd_bidang').find('option:selected').val();
-        $('#NmBidang').val(id);
-        $.ajax({
-            url: urlbagian,
-            method: "POST",
-            data: { id: id },
-            async: false,
-            dataType: 'json',
-            success: function (data) {
-                bagian.setChoices([{
-                          value: '',
-                          label: 'Pilih bagian',
-                          selected:true,
-                          disabled: true
-                        }]);
-                var i;
-                for (i = 0; i < data.length; i++) {
-                    bagian.setChoices([{
-                          value: data[i].idmd_bagian,
-                          label: data[i].kodebagian+' - '+data[i].namabagian
-                        }]);
 
                 }
 

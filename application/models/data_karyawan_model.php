@@ -20,6 +20,29 @@ class Data_karyawan_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_organisasi()
+    {
+        $this->db->select('idmd_organisasi,kodeorganisasi,namaorganisasi');
+        $this->db->from('md_organisasi');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
+    public function get_level()
+    {
+        $this->db->select('level,namalevel');
+        $this->db->from('md_level');
+        $query=$this->db->get();
+        return $query->result();
+    }
+     public function get_grade()
+    {
+        $this->db->select('idmd_grade,grade,gajipokok');
+        $this->db->from('md_grade');
+        $query=$this->db->get();
+        return $query->result();
+    }
+
     
      
 }

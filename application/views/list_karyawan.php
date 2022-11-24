@@ -327,6 +327,55 @@
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Satuan Organisasi</label>
+                                                                                                    <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih satuan organisasi">
+                                                                                                        
+                                                                                                        <option value="">Pilih Satuan Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
+                                                                                                        <?php } ?>
+
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Bidang Organisasi</label>
+                                                                                                    <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih bagian">
+                                                                                                        <option value="">Pilih bagian</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-lg-6">
+                                                                                                 <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Jabatan Organisasi</label>
+                                                                                                    <input id="NmBidang" name="NmBidang" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_jabatan" id="idmd_jabatan" placeholder="Pilih jabatan">
+                                                                                                        <option value="">Pilih jabatan</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
+                                                                                                    <select class="form-control" name="idmd_level" id="pilih-level" placeholder="Pilih level jabatan">
+
+                                                                                                        <option value="">Pilih level jabatan</option>
+                                                                                                        <?php foreach ($level as $data) {?>
+                                                                                                        <option value="<?php echo $data->level ?>"><?php echo $data->level ?> - <?php echo $data->namalevel ?></option>
+                                                                                                        <?php } ?>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                             <div class="col-lg-6">
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
                                                                                                     <select class="form-control" name="status" id="statusjabatan" placeholder="Status Jabatan">
@@ -338,39 +387,10 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                 <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Nama Jabatan</label>
-                                                                                                    <select class="form-control" name="namajabatan" id="pilih-jabatan" placeholder="Pilih jabatan">
-                                                                                                        <option value="">Pilih jabatan</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
                                                                                                     <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tmtjabatan" placeholder="TMT Jabatan">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Bagian</label>
-                                                                                                    <select class="form-control" name="idmd_bagian" id="pilih-bagian" placeholder="Pilih bagian">
-                                                                                                        <option value="">Pilih bagian</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label">Satuan Organisasi</label>
-                                                                                                    <select class="form-control" name="idmd_organisasi" id="pilih-organisasi" placeholder="Pilih satuan organisasi">
-                                                                                                        <option value="">Pilih satuan organisasi</option>
-                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
 
@@ -384,15 +404,6 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
-                                                                                                    <select class="form-control" name="idmd_level" id="pilih-level" placeholder="Pilih level jabatan">
-                                                                                                        <option value="">Pilih level jabatan</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                           
                                                                                         </div>
                                                                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
@@ -410,8 +421,11 @@
                                                                                              <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Konversi Baru</label>
-                                                                                                    <select class="form-control" name="konversibaru" id="grade" placeholder="Grade">
+                                                                                                    <select class="form-control" name="idmd_grade" id="grade" placeholder="Grade">
                                                                                                         <option value="">Pilih grade</option>
+                                                                                                        <?php foreach ($grade as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_grade ?>"><?php echo $data->grade ?> - <?php echo $data->gajipokok ?></option>
+                                                                                                        <?php } ?>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -480,7 +494,7 @@
                                                                                                 </div>
                                                                                             </div>
 
-                                                                                            <div class="col-lg-12">
+                                                                                            <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Upah Pokok Berlaku(Rp)</label>
                                                                                                     <input type="text" class="form-control" id="upah-pokok-berlaku" name="ub_upahpokokberlaku" placeholder="Isi upah pokok berlaku">
@@ -813,6 +827,89 @@
 <script src="<?php echo base_url('assets/js/pages/form-advanced.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+
+<script type="text/javascript">
+    const bidang = new Choices('#idmd_bidang', {
+    shouldSort: false,placeholder: true
+    });
+    
+    const jabatan = new Choices('#idmd_jabatan', {
+    shouldSort: false,placeholder: true
+    });
+
+
+    var urlbidang = '<?php echo site_url('data/getbidang') ?>';
+    var urljabatan = '<?php echo site_url('data/getjabatan') ?>';
+
+    $('#idmd_organisasi').change(function () {
+        bidang.clearChoices();
+        jabatan.clearChoices();
+        var id = $('#idmd_organisasi').find('option:selected').val();
+        $('#NmSatminkal').val(id);
+        $.ajax({
+            url: urlbidang,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                bidang.setChoices([{
+                          value: '',
+                          label: 'Pilih bidang',
+                          selected:true,
+                          disabled: true
+                        }]);
+                jabatan.setChoices([{
+                          value: '',
+                          label: 'Pilih bagian',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    bidang.setChoices([{
+                          value: data[i].idmd_bidang,
+                          label: data[i].kodebidang+' - '+data[i].namabidang
+                        }]);
+
+
+
+                }
+
+            }
+        });
+    });
+
+     $('#idmd_bidang').change(function () {
+        jabatan.clearChoices();
+        var id = $('#idmd_bidang').find('option:selected').val();
+        $('#NmBidang').val(id);
+        $.ajax({
+            url: urljabatan,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                jabatan.setChoices([{
+                          value: '',
+                          label: 'Pilih jabatan',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    jabatan.setChoices([{
+                          value: data[i].idmd_jabatan,
+                          label: data[i].namajabatan
+                        }]);
+
+                }
+
+            }
+        });
+    });
+</script>
 
 </body>
 
