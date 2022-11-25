@@ -146,11 +146,11 @@
 
 
                                     <tbody>
-                                       
+                                       <?php $no = 0; foreach ($grade as $data) {$no=$no+1;?>
                                         <tr>
-                                            <td width="50">1</td>
-                                            <td>1</td>
-                                            <td>4.500.000</td>
+                                            <td width="50"><?php echo $no; ?></td>
+                                            <td><?php echo $data->grade ?></td>
+                                            <td><?php echo $data->gajipokok ?></td>
                                             <td width="50"> 
                                                 <div>
                                                     <div class="btn-group btn-group-example" role="group">
@@ -159,6 +159,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        <?php } ?>
                                         
                                     </tbody>
                                 </table>

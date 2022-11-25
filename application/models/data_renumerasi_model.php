@@ -12,8 +12,8 @@ class Data_renumerasi_model extends CI_Model {
 
    public function get_renumerasi()
     {
-        $this->db->select('Grade,GajiPokok');
-        $this->db->from('md_matriksgrade');
+        $this->db->select('idmd_grade,grade,gajipokok');
+        $this->db->from('md_grade');
 
         $query=$this->db->get();
         return $query->result();

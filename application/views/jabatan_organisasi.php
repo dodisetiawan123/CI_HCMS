@@ -12,6 +12,9 @@
     <!-- Responsive datatable examples -->
     <link href="<?php echo base_url('assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css') ?>" />
 
+    <!-- Sweet Alert-->
+    <link href="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css" />
+    
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.css') ?>">
 
@@ -246,6 +249,9 @@
 <script src="<?php echo base_url('assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js') ?>"></script>
 
+<!-- Sweet Alerts js -->
+<script src="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.js') ?>"></script>
+
 <!-- Datatable init js -->
 <script src="<?php echo base_url('assets/js/pages/datatables.init.js') ?>"></script>
 
@@ -266,6 +272,19 @@
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+<script>
+     <?php if ($this->session->flashdata('done')) {?>
+       $(window).on('load', function() {
+            Swal.fire({
+            position: 'top-midle',
+            icon: 'success',
+            title: 'Data berhasil di simpan',
+            showConfirmButton: false,
+            timer: 1500
+            })
+        });
+    <?php } ?>
+</script>
 
 <script type="text/javascript">
     $(function () {

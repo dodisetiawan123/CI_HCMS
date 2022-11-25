@@ -718,9 +718,6 @@
                                     </div><!-- /.modal -->
                                 </div>
                             <div class="card-body">
-<td class="text-center">
-                                                    <button type="button" class="btn btn-primary btn-sm waves-effect waves-light" id="sa-position">Click me</button>
-                                                </td>
                                 <table id="datatable" class="table table-bordered dt-responsive  nowrap w-100">
                                     <thead>
                                         <tr>
@@ -830,12 +827,11 @@
 <!-- init js -->
 <script src="<?php echo base_url('assets/js/pages/form-advanced.init.js') ?>"></script>
 
-<!-- Sweet alert init js-->
-<script src="<?php echo base_url('assets/js/pages/sweetalert.init.js') ?>"></script>
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
 
 <script type="text/javascript">
+
     const bidang = new Choices('#idmd_bidang', {
     shouldSort: false,placeholder: true
     });

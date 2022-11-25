@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->model('dashboard_model');
 		$this->load->model('data_karyawan_model');
 		$this->load->model('data_renumerasi_model');
@@ -21,15 +22,43 @@ class Admin extends CI_Controller {
 	//DASHBOARD
 	public function dashboard()
 	{
+		if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+
 		$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
 		$this->load->view('dashboard', $this->data);
+
+		}
 	}
 
 	//RENUMERASI
 	public function renumerasi()
 	{
-		$this->data['grade'] = $this->data_renumerasi_model->get_renumerasi();
-		$this->load->view('matrik_grade', $this->data);
+		if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+			$this->data['grade'] = $this->data_renumerasi_model->get_renumerasi();
+			$this->load->view('matrik_grade', $this->data);
+		}
 	}
 
 
@@ -47,6 +76,7 @@ class Admin extends CI_Controller {
 				'namaorganisasi' => ucwords($this->input->post('namaorganisasi'))
 			);
 		$this->data_organisasi_model->insertorganisasi($data);
+		$this->session->set_flashdata('done', 'Data berhasil tersimpan');
 		redirect('admin/satuan_organisasi', 'refresh');
 
 		
@@ -72,6 +102,7 @@ class Admin extends CI_Controller {
 			);
 
 		$this->data_bidang_model->insertbidang($data);
+		$this->session->set_flashdata('done', 'Data berhasil tersimpan');
 		redirect('admin/bidang', 'refresh');
 
 		
@@ -119,6 +150,7 @@ class Admin extends CI_Controller {
 			);
 
 		$this->data_jabatan_model->insertjabatan($data);
+		$this->session->set_flashdata('done', 'Data berhasil tersimpan');
 		redirect('admin/jabatan', 'refresh');
 
 		
@@ -143,97 +175,54 @@ class Admin extends CI_Controller {
 	//Data Karyawan
 	public function data_karyawan()
 	{
-		$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
-		$this->data['level'] = $this->data_karyawan_model->get_level();
-		$this->data['grade'] = $this->data_karyawan_model->get_grade();
-		$this->data['organisasi'] = $this->data_karyawan_model->get_organisasi();
-		$this->load->view('list_karyawan', $this->data);
+		if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+			$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+			$this->data['level'] = $this->data_karyawan_model->get_level();
+			$this->data['grade'] = $this->data_karyawan_model->get_grade();
+			$this->data['organisasi'] = $this->data_karyawan_model->get_organisasi();
+			$this->load->view('list_karyawan', $this->data);
+		}
 	}
 
 	public function insertdata()
 	{
 		var_dump($_POST);
 		exit();
-
-		$this->validasi_form();
-		if($this->form_validation->run() === FALSE)
+		if (!$this->ion_auth->logged_in())
 		{
-			$this->data['data'] =[
-				'email' => $this->input->post('nama'),
-				'name' => $this->input->post('alamat_jalan'),
-				'jenisid' => $this->input->post('rt'),
-				'no_id' => $this->input->post('rw'),
-				'no_telp' => $this->input->post('kecamatan'),
-				'alamat' => $this->input->post('kabupaten'),
-				'subjekinfo' => $this->input->post('pekerjaan'),
-				'rincian' => $this->input->post('email'),
-				'tujuan' => $this->input->post('telp')
-			];
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
 
-			$this->session->set_flashdata('gagal', 'Permohonan gagal terkirim!! Pastikan semua form telah terisi.');
-			//$this->load->view('public/informasiform', $this->data);
-			redirect('home/forminformasi','refresh');
-		}else{
-
-			    /* Conf */
-            $config['upload_path']      = './uploads/';
-            $config['allowed_types']    = 'gif|jpg|png';
-            $config['max_size']         = 50480;
-            $config['file_ext_tolower'] = TRUE;
-
-            $this->load->library('upload', $config);
-
-            //Upload Dokumen Wajib
-            if ( ! $this->upload->do_upload('userfile'))
-            {
-                /* Data */
-                $eror = $this->upload->display_errors();
-                $this->session->set_flashdata('gagal_file', 'Pastikan file gambar yang di upload memiliki format jpg/png');
-                redirect('home/forminformasi','refresh');
-            }
-            else
-            {
-                
-                /* Data */
-                $data = $this->upload->data();
-                $additional_data = array(
-                        'nama_file'  => $data['file_name']
-                    );
-                $id_file = $this->public_model->insert_file($additional_data);
-            }
-
-
-			date_default_timezone_set('Asia/Jakarta');
-			$additional_data = array(
-				'email' => $this->input->post('email'),
+			$data = array(
 				'nama' => $this->input->post('nama'),
-				'jenisid' => $this->input->post('jenisid'),
-				'no_id' => $this->input->post('no_id'),
-				'no_telp' => $this->input->post('no_telp'),
-				'alamat' => $this->input->post('alamat')
+				'npk' => $this->input->post('npk'),
+				'tempatlahir' => $this->input->post('jenisid'),
+				'tgllahir' => $this->input->post('no_id'),
+				'jeniskelamin' => $this->input->post('no_telp'),
+				'agama' => $this->input->post('alamat')
 			);
 			
-			$insert_id = $this->public_model->add_identitas($additional_data);
-
-			$data_informasi = array(
-				'subjekinfo' => $this->input->post('subjekinfo'),
-				'rincian' => $this->input->post('rincian'),
-				'tujuan' => $this->input->post('tujuan'),
-				'col_id_identitas' => $insert_id
-			);
-
-			$insert_id_informasi = $this->public_model->add_informasi($data_informasi);
-
-			$data_informasi_status = array(
-				'id_status' => 1,
-				'id_informasi' => $insert_id_informasi,
-				'col_id_identitas' => $insert_id,
-				'id_file' => $id_file
-			);
-			$this->public_model->set_status($data_informasi_status);
-			$this->sendEmail($insert_id_informasi);
             $this->session->set_flashdata('berhasil', 'Data berhasil terkirim');
-            redirect('home/forminformasi');
+            redirect('admin/data_karyawan');
 
 		}
 	}

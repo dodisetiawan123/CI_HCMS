@@ -28,11 +28,13 @@
                                     <h5 class="mb-0">Selamat datang di aplikasi <br> Human Capital Management System!</h5>
                                     <p class="text-muted mt-2">Silahkan login untuk melanjutkan.</p>
                                 </div>
-                                <form class="custom-form mt-4 pt-2" action="<?php echo site_url('admin/dashboard') ?>" method="post">
+                                
+                                <div id="infoMessage"><span class="text-danger"><?php echo $message;?></span></div>
+                                <?php echo form_open("auth/login");?>
                                     <div class="mb-3">
                                         <label class="form-label" for="username">Username</label>
-                                        <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" value="Henry">
-                                        <span class="text-danger"></span>
+                                        <?php echo form_input($identity);?>
+                                        
                                     </div>
                                     <div class="mb-3 ">
                                         <div class="d-flex align-items-start">
@@ -47,7 +49,7 @@
                                         </div>
 
                                         <div class="input-group auth-pass-inputgroup">
-                                            <input type="password" class="form-control" placeholder="Enter password" name="password" value="123456" aria-label="Password" aria-describedby="password-addon">
+                                            <?php echo form_input($password);?>
                                             <span class="text-danger"></span>
                                             <button class="btn btn-light ms-0" type="button" id="password-addon"><i class="mdi mdi-eye-outline"></i></button>
                                         </div>
@@ -66,7 +68,7 @@
                                     <div class="mb-3">
                                         <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log In</button>
                                     </div>
-                                </form>
+                               <?php echo form_close();?>
 
                               
 
