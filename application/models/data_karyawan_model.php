@@ -12,9 +12,12 @@ class Data_karyawan_model extends CI_Model {
 
     public function get_karyawan()
     {
-        $this->db->select('Nama,NPK,');
+        $this->db->select('nama,md_karyawan.npk,md_organisasi.namaorganisasi,md_bidang.namabidang,md_jabatan.namajabatan');
         $this->db->from('md_karyawan');
-        //$this->db->join('dbo.DEPARTMENTS', 'dbo.USERINFO.DEFAULTDEPTID = dbo.DEPARTMENTS.DEPTID', 'left' );
+        $this->db->join('mk_jabatan', 'mk_jabatan.npk = md_karyawan.npk', 'left' );
+        $this->db->join('md_jabatan', 'mk_jabatan.idmd_jabatan = md_jabatan.idmd_jabatan', 'left' );
+        $this->db->join('md_bidang', 'mk_jabatan.idmd_bidang = md_bidang.idmd_bidang', 'left' );
+        $this->db->join('md_organisasi', 'mk_jabatan.idmd_organisasi = md_organisasi.idmd_organisasi', 'left' );
 
         $query=$this->db->get();
         return $query->result();
@@ -41,6 +44,31 @@ class Data_karyawan_model extends CI_Model {
         $this->db->from('md_grade');
         $query=$this->db->get();
         return $query->result();
+    }
+
+  
+    public function insertmdkaryawan($data_md_karyawan)
+    {
+         $this->db->insert('md_karyawan', $data_md_karyawan);
+            
+    }
+
+    public function insertmkpendidikan($data_mk_pendidikan)
+    {
+         $this->db->insert('mk_pendidikan', $data_mk_pendidikan);
+            
+    }
+
+    public function insertmkjabatan($data_mk_jabatan)
+    {
+         $this->db->insert('mk_jabatan', $data_mk_jabatan);
+            
+    }
+
+    public function insertmkrenumerasi($data_mk_renumerasi)
+    {
+         $this->db->insert('mk_renumerasi', $data_mk_renumerasi);
+            
     }
 
     

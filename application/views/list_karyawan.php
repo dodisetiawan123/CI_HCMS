@@ -158,7 +158,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-npk">NPK</label>
-                                                                                                <input type="number" class="form-control" id="npk" name="npk" placeholder="NPK">
+                                                                                                <input type="number" class="form-control" id="npk" name="npk" placeholder="NPK" required>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -205,8 +205,8 @@
                                                                                     <div class="row">
                                                                                          <div class="col-lg-6">
                                                                                                   <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status</label>
-                                                                                                    <select class="form-control" name="status" id="status" placeholder="Jenis kelamin">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Marital</label>
+                                                                                                    <select class="form-control" name="idmd_marital" id="status" placeholder="Jenis kelamin">
                                                                                                         <option value="">Pilih status karyawan</option>
                                                                                                         <option value="BK">BK - Belum Kawin </option>
                                                                                                         <option value="TK">TK - Cerai Hidup / Cerai Mati</option>
@@ -234,7 +234,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-phoneno-input">No Hp</label>
-                                                                                                <input type="number" name="no_hp" class="form-control" id="" placeholder="No Hp">
+                                                                                                <input type="number" name="nohp" class="form-control" id="" placeholder="No Hp">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
@@ -377,19 +377,19 @@
                                                                                              <div class="col-lg-6">
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
-                                                                                                    <select class="form-control" name="status" id="statusjabatan" placeholder="Status Jabatan">
+                                                                                                    <select class="form-control" name="statusjabatan" id="statusjabatan" placeholder="Status Jabatan">
                                                                                                         <option value="">Pilih status jabatan karyawan</option>
-                                                                                                        <option value="SD">Def. - Definitif</option>
-                                                                                                        <option value="SMP">Pgs. - Penganti Sementara</option>
-                                                                                                        <option value="SMA">Pjs. - Pejabat Sementara</option>
-                                                                                                        <option value="SMK">Plt. - Pelaksana Tugas</option>
+                                                                                                        <option value="Definitif">Def. - Definitif</option>
+                                                                                                        <option value="Penganti Sementara">Pgs. - Penganti Sementara</option>
+                                                                                                        <option value="Pejabat Sementara">Pjs. - Pejabat Sementara</option>
+                                                                                                        <option value="Pelaksana Tugas">Plt. - Pelaksana Tugas</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tmtjabatan" placeholder="TMT Jabatan">
+                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan">
                                                                                                 </div>
                                                                                             </div>
 
@@ -432,7 +432,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">TMT Grade</label>
-                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkat">
+                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -725,7 +725,7 @@
                                             <th>NPK</th>
                                             <th>Nama</th>
                                             <th>Jabatan</th>
-                                            <th>Bagian</th>
+                                            <th>Bidang</th>
                                             <th>Satuan Organisasi</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -736,11 +736,11 @@
                                         <?php $no=0; foreach ($karyawan as $data) {?>
                                         <tr>
                                             <td><?php $no=$no+1; echo $no ?></td>
-                                            <td><?php echo $data->NPK ?></td>
-                                            <td><?php echo $data->Nama ?></td>
-                                            <td>Biro Sistem Management dan K3LH</td>
-                                            <td>General Manager</td>
-                                            <td>IT</td>
+                                            <td><?php echo $data->npk ?></td>
+                                            <td><?php echo $data->nama ?></td>
+                                            <td><?php echo $data->namajabatan; ?></td>
+                                            <td><?php echo $data->namabidang; ?></td>
+                                            <td><?php echo $data->namaorganisasi; ?></td>
                                             <td width="50"> 
                                                 <div>
                                                     <div class="btn-group btn-group-example" role="group">
@@ -829,6 +829,19 @@
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+<script>
+     <?php if ($this->session->flashdata('done')) {?>
+       $(window).on('load', function() {
+            Swal.fire({
+            position: 'top-midle',
+            icon: 'success',
+            title: 'Data berhasil di simpan',
+            showConfirmButton: false,
+            timer: 1500
+            })
+        });
+    <?php } ?>
+</script>
 
 <script type="text/javascript">
 

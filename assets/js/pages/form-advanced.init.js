@@ -131,37 +131,37 @@ flatpickr('#datepicker-basic');
 flatpickr('#datepicker-datetime-tanggallahir', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 
 flatpickr('#tanggal-dirumahkan', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 
 flatpickr('#tgldiangkat', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 
 flatpickr('#datepicker-datetime-tanggalmasuk', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 
 flatpickr('#datepicker-datetime-tmtjabatan', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 
 flatpickr('#datepicker-datetime-tanggalangkat', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "m-d-Y"
+  dateFormat: "Y-m-d"
 });
 flatpickr('#datepicker-datetime-lulus', {
   enableTime: false,
