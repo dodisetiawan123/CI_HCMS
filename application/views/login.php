@@ -20,7 +20,7 @@
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
                                 <a href="index.php" class="d-block auth-logo">
-                                    <img src="<?php echo base_url('assets/images/logo-sm.svg') ?>" alt="" height="28"> <span class="logo-txt">HCMS</span>
+                                    <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="28" width="180">
                                 </a>
                             </div>
                             <div class="auth-content my-auto">

@@ -256,7 +256,7 @@
                                                                                     </div>
                                                                                     <form>
                                                                                         <div class="row">
-                                                                                             <div class="col-lg-6">
+                                                                                             <div class="col-lg-4">
                                                                                                   <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Tingkat Pendidikan</label>
                                                                                                     <select class="form-control" name="levelpendidikan" id="pilih-pendidikan" placeholder="Pilih tingkat pendidikan">
@@ -272,6 +272,12 @@
                                                                                                         <option value="Sarjana 1">Sarjana 1</option>
                                                                                                         <option value="Sarjana 2">Sarjana 2</option>
                                                                                                     </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-2">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Golongan Pendidikan</label>
+                                                                                                    <input type="text" class="form-control" id="golpend" name="golpend" placeholder="Golongan Pendidikan" readonly>
                                                                                                 </div>
                                                                                             </div>
 
@@ -311,13 +317,20 @@
                                                                                         <p class="card-title-desc">Isi informasi karir karyawan</p>
                                                                                     </div>  
                                                                                         <div class="row">
-                                                                                            <div class="col-lg-6">
+                                                                                            <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">Tanggal Masuk</label>
                                                                                                     <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk">
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-lg-6">
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-tanggalmasuk">Lama Kerja</label>
+                                                                                                    <input type="text" class="form-control" id="lamakerja" 
+                                                                                                     name="lamakerja"  placeholder="Lama Kerja" readonly>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-pengangkatan">Tanggal Pengangkatan</label>
                                                                                                     <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan">
@@ -325,7 +338,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
-                                                                                            <div class="col-lg-6">
+                                                                                            <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Satuan Organisasi</label>
                                                                                                     <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
@@ -339,7 +352,7 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-lg-6">
+                                                                                            <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Bidang Organisasi</label>
                                                                                                     <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih bagian">
@@ -347,11 +360,9 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
 
-                                                                                        <div class="row">
 
-                                                                                            <div class="col-lg-6">
+                                                                                            <div class="col-lg-4">
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Jabatan Organisasi</label>
                                                                                                     <input id="NmBidang" name="NmBidang" type="hidden" class="form-control">
@@ -360,6 +371,9 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        </div>
+
+                                                                                        <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
@@ -372,9 +386,7 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                             <div class="col-lg-6">
+                                                                                            <div class="col-lg-6">
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
                                                                                                     <select class="form-control" name="statusjabatan" id="statusjabatan" placeholder="Status Jabatan">
@@ -386,6 +398,9 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                             
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
@@ -679,21 +694,6 @@
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Golongan Pendidikan</label>
-                                                                                                    <select class="form-control" name="golpend" id="golpend" placeholder="Pilih golongan pendidikan">
-                                                                                                        <option value="">Pilih golongan pendidikan</option>
-                                                                                                        <option value="A">A</option>
-                                                                                                        <option value="B">B</option>
-                                                                                                        <option value="C">C</option>
-                                                                                                        <option value="D">D</option>
-                                                                                                        <option value="E">E</option>
-                                                                                                        <option value="F">F</option>
-                                                                                                        <option value="G">G</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
                                                                                         </div>
                                                                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
@@ -745,7 +745,7 @@
                                                 <div>
                                                     <div class="btn-group btn-group-example" role="group">
                                                         <button type="button" class="btn btn-sm btn-info w-xs">Edit</i></button>
-                                                        <button onclick="location.href='<?php echo site_url('admin/detail_karyawan') ?>'" type="button" class="btn btn-sm btn-primary w-xs">Detail</i></button>
+                                                        <button onclick="location.href='<?php echo site_url('admin/detail_karyawan/'.$data->npk) ?>'" type="button" class="btn btn-sm btn-primary w-xs">Detail</i></button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -804,10 +804,10 @@
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.js') ?>"></script>
 
 <!-- form mask -->
-<script src="<?php  echo base_url('assets/libs/imask/imask.min.js') ?>"></script>
+<!-- <script src="<?php  //echo base_url('assets/libs/imask/imask.min.js') ?>"></script> -->
 
 <!-- form mask init -->
-<script src="<?php  echo base_url('assets/js/pages/form-mask.init.js') ?>"></script>
+<!-- <script src="<?php  //echo base_url('assets/js/pages/form-mask.init.js') ?>"></script> -->
 
 <!-- choices js -->
 <script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
@@ -829,6 +829,58 @@
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+<script>
+    function dateAgo(date) {
+    var startDate = new Date(date);
+    var diffDate = new Date(new Date() - startDate);
+    return ((diffDate.toISOString().slice(0, 4) - 1970) + " Tahun " +
+        diffDate.getMonth() + " Bulan " + (diffDate.getDate()-1) + " Hari");
+    }
+
+    $('#datepicker-datetime-tanggalmasuk').change(function () {
+        var tgl = $('#datepicker-datetime-tanggalmasuk').val();
+        $('#lamakerja').val(dateAgo(tgl));
+
+    });
+
+    const isEmpty = str => !str.trim().length;
+
+    document.getElementById("datepicker-datetime-tanggalmasuk").addEventListener("input", function() {
+      if( isEmpty(this.value) ) {
+        $('#lamakerja').val('');
+      }
+    });
+</script>
+        
+<script>
+    $('#pilih-pendidikan').change(function () {
+        var pendidikan = $('#pilih-pendidikan').find('option:selected').val();
+        if (pendidikan=='SD') {
+            var value = 'A'
+        } else if (pendidikan=='SMP') {
+            var value = 'B'
+        } else if (pendidikan=='SMA') {
+            var value = 'C'
+        } else if (pendidikan=='SMK') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 1') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 2') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 3') {
+            var value = 'D'
+        } else if (pendidikan=='Diploma 4') {
+            var value = 'E'
+        } else if (pendidikan=='Sarjana 1') {
+            var value = 'F'
+        } else if (pendidikan=='Sarjana 2') {
+            var value = 'G'
+        } 
+        $('#golpend').val(value);
+
+    });
+</script>
+
 <script>
      <?php if ($this->session->flashdata('done')) {?>
        $(window).on('load', function() {
@@ -925,6 +977,9 @@
             }
         });
     });
+
+
+    
 </script>
 
 </body>

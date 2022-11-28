@@ -113,10 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     shouldSort: false,searchEnabled: false,
   });
 
-  // Golpend
-  var singleNoSorting = new Choices('#golpend', {
-    shouldSort: false,searchEnabled: false,
-  });
+ 
   
   
   
@@ -131,48 +128,56 @@ flatpickr('#datepicker-basic');
 flatpickr('#datepicker-datetime-tanggallahir', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#tanggal-dirumahkan', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#tgldiangkat', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#datepicker-datetime-tanggalmasuk', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#datepicker-datetime-tmtjabatan', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#datepicker-datetime-tanggalangkat', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y-m-d"
+  dateFormat: "Y-m-d",
+  allowInput: true
 });
 flatpickr('#datepicker-datetime-lulus', {
   enableTime: false,
   maxDate: new Date().fp_incr(0),
-  dateFormat: "Y"
+  dateFormat: "Y",
+  allowInput: true
 });
 
 flatpickr('#datepicker-humanfd', {
   altInput: true,
   altFormat: "F j, Y",
   dateFormat: "Y-m-d",
+  allowInput: true
 });
 
 flatpickr('#datepicker-minmax', {

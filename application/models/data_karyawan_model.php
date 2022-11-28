@@ -23,6 +23,20 @@ class Data_karyawan_model extends CI_Model {
         return $query->result();
     }
 
+    public function getpersonaldata($npk)
+    {
+        $this->db->select('nama,md_karyawan.npk,tempatlahir,tgllahir,md_organisasi.namaorganisasi,md_bidang.namabidang,md_jabatan.namajabatan,');
+        $this->db->from('md_karyawan');
+        $this->db->join('mk_jabatan', 'mk_jabatan.npk = md_karyawan.npk', 'left' );
+        $this->db->join('md_jabatan', 'mk_jabatan.idmd_jabatan = md_jabatan.idmd_jabatan', 'left' );
+        $this->db->join('md_bidang', 'mk_jabatan.idmd_bidang = md_bidang.idmd_bidang', 'left' );
+        $this->db->join('md_organisasi', 'mk_jabatan.idmd_organisasi = md_organisasi.idmd_organisasi', 'left' );
+        $this->db->where('md_karyawan.npk', $npk);
+        $query=$this->db->get();
+        return $query->row_array();
+    }
+    
+
     public function get_organisasi()
     {
         $this->db->select('idmd_organisasi,kodeorganisasi,namaorganisasi');

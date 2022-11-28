@@ -572,8 +572,8 @@
                                             </div>
                                             <div class="flex-grow-1">
                                                 <div>
-                                                    <h5 class="font-size-17 mb-1">Siti Maimunah</h5>
-                                                    <p class="text-muted font-size-13 mb-1">Jabatan : General Manager</p><p class="text-muted font-size-13 mb-1">Satuan organisasi : Biro Sistem Manajement dan K3LH</p><p class="text-muted font-size-13 mb-1">Bagian : IT Support</p>
+                                                    <h5 class="font-size-17 mb-2"><?php echo $personaldata['nama'] ?> - <?php echo $personaldata['npk'] ?></h5>
+                                                    <p class="text-muted font-size-13 mb-1"><strong>Jabatan : </strong><?php echo $personaldata['namajabatan']   ?></p><p class="text-muted font-size-13 mb-1"><strong>Satuan Organisasi : </strong> <?php echo $personaldata['namaorganisasi']   ?></p><p class="text-muted font-size-13 mb-1"><strong>Bidang : </strong><?php echo $personaldata['namabidang']   ?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -582,19 +582,25 @@
 
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">Identitas Karyawan</a>
+                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">PERSONAL BACKGROUND</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#informasi" role="tab">Informasi Jabatan</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#informasi" role="tab">EDUCATIONAL BACKGROUND</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">Renumerasi</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">CAREER</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#efisiensi" role="tab">Efisiensi</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#efisiensi" role="tab">GRADE</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#post" role="tab">Pendidikan</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#post" role="tab">UPAH BERLAKU</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#upah" role="tab">UPAH EFISIENSI</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#efisiensi" role="tab">EFISIENSI</a>
                                     </li>
                                 </ul>
                             </div>
@@ -606,47 +612,149 @@
                             <div class="tab-pane active" id="overview" role="tabpanel">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Identitas Siti Maimunah</h5>
+                                        <h5 class="card-title mb-0">Personal Background <?php echo $personaldata['nama'] ?></h5>
                                     </div>
                                     <div class="card-body">
-                                        <div>
-                                            <div class="pb-3">
-                                                <div class="row">
-                                                    <div class="col-xl-2">
-                                                        <div>
-                                                            <h5 class="font-size-15">Bio :</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl">
-                                                        <div class="text-muted">
-                                                            <p class="mb-2">Hi I'm Phyllis Gatlin, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages</p>
-                                                            <p class="mb-0">It is a long established fact that a reader will be distracted by the readable content of a page when looking at it has a more-or-less normal distribution of letters</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                         <div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-8">
 
-                                            <div class="py-3">
-                                                <div class="row">
-                                                    <div class="col-xl-2">
-                                                        <div>
-                                                            <h5 class="font-size-15">Experience :</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl">
-                                                        <div class="text-muted">
-                                                            <p>If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental. To an English person, it will seem like simplified English, as a skeptical Cambridge friend of mine told me what Occidental is. The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc</p>
 
-                                                            <ul class="list-unstyled mb-0">
-                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Donec vitae sapien ut libero venenatis faucibus</li>
-                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Quisque rutrum aenean imperdiet</li>
-                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Integer ante a consectetuer eget</li>
-                                                                <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-success align-middle"></i>Phasellus nec sem in justo pellentesque</li>
+                                                    <div class="mt-5">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Project discussion with team</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0">24 Mar, 2020</p>
+                                                            </div>
+                                                            <div class="flex-shrink-0 ms-2">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="pt-3">
+                                                            <ul class="list-inline">
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Development
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 08 Comments
+                                                                    </a>
+                                                                </li>
                                                             </ul>
+                                                            <p class="text-muted">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+
+                                                            
                                                         </div>
                                                     </div>
+                                                    <!-- end post -->
+
+                                                    <hr class="my-5">
+
+                                                    <div>
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Beautiful Day with Friends</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0">10 Apr, 2020</p>
+                                                            </div>
+                                                            <div class="flex-shrink-0 ms-2">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="position-relative mt-3">
+                                                            <img src="assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
+                                                        </div>
+
+                                                        <div class="pt-3">
+                                                            <ul class="list-inline">
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Project
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 12 Comments
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <p class="text-muted">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, aliquam quaerat voluptatem. Ut enim ad minima veniam, quis</p>
+
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+
+                                                    <hr class="my-5">
+
+                                                    <div>
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Drawing a sketch</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0">20 Mar, 2020</p>
+                                                            </div>
+                                                            <div class="flex-shrink-0 ms-2">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="pt-3">
+                                                            <ul class="list-inline">
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Project
+                                                                    </a>
+                                                                </li>
+                                                                <li class="list-inline-item me-3">
+                                                                    <a href="javascript: void(0);" class="text-muted">
+                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 12 Comments
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <p class="text-muted">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, aliquam quaerat voluptatem. Ut enim ad minima veniam, quis</p>
+
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
                                                 </div>
+                                                <!-- end col -->
+
                                             </div>
+                                            <!-- end row -->
+
+                                           
                                         </div>
                                     </div>
                                     <!-- end card body -->
@@ -658,7 +766,7 @@
                             <div class="tab-pane" id="informasi" role="tabpanel">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Identitas Siti Maimunah</h5>
+                                        <h5 class="card-title mb-0">Educational Background <?php echo $personaldata['nama'] ?></h5>
                                     </div>
                                     <div class="card-body">
                                         <div>

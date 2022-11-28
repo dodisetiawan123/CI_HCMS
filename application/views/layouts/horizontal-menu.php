@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="index.php" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="<?php echo base_url('assets/images/logo-sm.svg') ?>" alt="" height="24">
+                        <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="24" width="160">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo base_url('assets/images/logo-sm.svg') ?>" alt="" height="24"> <span class="logo-txt">HCMS</span>
+                        <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="24" width="160">
                     </span>
                 </a>
 
                 <a href="index.php" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="<?php echo base_url('assets/images/logo-sm.svg') ?>" alt="" height="24">
+                        <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="24" width="160">
                     </span>
                     <span class="logo-lg">
-                        <img src="<?php echo base_url('assets/images/logo-sm.svg') ?>" alt="" height="24"> <span class="logo-txt">HCMS</span>
+                        <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="24" width="160">
                     </span>
                 </a>
             </div>

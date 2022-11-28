@@ -231,7 +231,7 @@ class Admin extends CI_Controller {
 				'levelpendidikan' => $this->input->post('levelpendidikan'),
 				'jurusan' => $this->input->post('jurusan'),
 				'institusi' => $this->input->post('institusi'),
-				'tahunlulus' => $this->input->post('alamat')
+				'tahunlulus' => $this->input->post('tahunlulus')
 			);
 			$data_mk_jabatan = array(
 				'idmd_jabatan' => $this->input->post('idmd_jabatan'),
@@ -285,9 +285,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function detail_karyawan()
+	public function detail_karyawan($npk)
 	{
-		$this->load->view('detail_karyawan');
+		if (empty($npk)) {
+			echo "Hayo mau ngapainnn";
+			exit;
+		}else{
+			$this->data['personaldata'] = $this->data_karyawan_model->getpersonaldata($npk);
+			$this->load->view('detail_karyawan', $this->data);
+		}
+
+		
 	}
 
 }
