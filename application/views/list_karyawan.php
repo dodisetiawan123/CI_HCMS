@@ -346,7 +346,7 @@
                                                                                                         
                                                                                                         <option value="">Pilih Satuan Organisasi</option>
                                                                                                         <?php foreach ($organisasi as $data) {?>
-                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->kodeorganisasi.' - '.$data->namaorganisasi; ?></option>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->namaorganisasi; ?></option>
                                                                                                         <?php } ?>
 
                                                                                                     </select>
@@ -937,7 +937,7 @@
                 for (i = 0; i < data.length; i++) {
                     bidang.setChoices([{
                           value: data[i].idmd_bidang,
-                          label: data[i].kodebidang+' - '+data[i].namabidang
+                          label: data[i].namabidang
                         }]);
 
 

@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
-            <div class="navbar-brand-box">
+            <div class="navbar-brand-box" style="width: 171px!important">
                 <a href="index.php" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="<?php echo base_url('assets/images/logo.png') ?>" alt="" height="24" width="160">
