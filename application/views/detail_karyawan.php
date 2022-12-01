@@ -55,13 +55,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <button type="button" class="btn btn-success waves-effect btn-label waves-light" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Update Data Karyawan</button>
-                                
-                            </div>
                             <div>
-                                    <!--  Extra Large modal example -->
-                                    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                     <!--  Extra Large modal example -->
+                                    <div class="modal fade bs-example-modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -69,6 +65,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
+                                                    <form enctype="multipart/form-data" name="karyawan" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertdata') ?>" onsubmit="return validateForm()">
                                                      <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="card">
@@ -77,38 +74,55 @@
                                                                     <div id="progrss-wizard" class="twitter-bs-wizard">
                                                                         <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                                                             <li class="nav-item">
-                                                                                <a href="#progress-seller-details" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Identitas Karyawan">
+                                                                                <a href="#progress-personal-background" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Personal Background">
                                                                                         <i class="bx bx-user"></i>
                                                                                     </div>
                                                                                 </a>
                                                                             </li>
                                                                             <li class="nav-item">
-                                                                                <a href="#progress-jabatan" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Jabatan">
-                                                                                        <i class="bx bx-id-card"></i>
+                                                                                <a href="#progress-educational-background" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Educational Background">
+                                                                                        <i class="bx bx-book-bookmark"></i>
                                                                                     </div>
                                                                                 </a>
                                                                             </li>
                                                                             <li class="nav-item">
-                                                                                <a href="#progress-company-document" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Renumerasi">
-                                                                                        <i class="bx bx-money"></i>
-                                                                                    </div>
-                                                                                </a>
-                                                                            </li>
-                                                                            <li class="nav-item">
-                                                                                <a href="#progress-efisiensi" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Efisiensi">
-                                                                                        <i class="bx bx-credit-card"></i>
+                                                                                <a href="#progress-career" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Career">
+                                                                                        <i class="bx bx-briefcase-alt-2"></i>
                                                                                     </div>
                                                                                 </a>
                                                                             </li>
 
                                                                             <li class="nav-item">
-                                                                                <a href="#progress-bank-detail" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Pendidikan">
-                                                                                        <i class="bx bx-book-bookmark"></i>
+                                                                                <a href="#progress-grade" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Grade">
+                                                                                        <i class="bx bx-user-pin"></i>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a href="#progress-upah-berlaku" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Upah Berlaku">
+                                                                                        <i class="bx bx-money"></i>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a href="#progress-upah-efisiensi" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Upah Efisiensi">
+                                                                                        <i class="bx bx-bar-chart-square"></i>
+                                                                                    </div>
+                                                                                </a>
+                                                                            </li>
+
+                                                                            <li class="nav-item">
+                                                                                <a href="#progress-efisiensi" class="nav-link" data-toggle="tab">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Efisiensi">
+                                                                                        <i class="bx bx-bar-chart"></i>
                                                                                     </div>
                                                                                 </a>
                                                                             </li>
@@ -119,23 +133,23 @@
                                                                             <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"></div>
                                                                         </div>
                                                                         <div class="tab-content twitter-bs-wizard-tab-content">
-                                                                            <div class="tab-pane" id="progress-seller-details">
+                                                                            <div class="tab-pane" id="progress-personal-background">
                                                                                 <div class="text-center mb-4">
-                                                                                    <h5>IDENTITAS KARYAWAN</h5>
+                                                                                    <h5>PERSONAL BACKGROUND</h5>
                                                                                     <p class="card-title-desc">Isi informasi identitas karyawan</p>
                                                                                 </div>
-                                                                                <form>
+                                                                                
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-firstname-input">Nama Karyawan</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-firstname-input">
+                                                                                                <label for="progresspill-nama-karyawan">Nama Karyawan</label>
+                                                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama karyawan">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-lastname-input">NPK</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-lastname-input">
+                                                                                                <label for="progresspill-npk">NPK</label>
+                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -143,50 +157,67 @@
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-phoneno-input">Tempat lahir</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-phoneno-input">
+                                                                                                <label for="progresspill-tempat-lahir">Tempat Lahir</label>
+                                                                                                <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Tempat lahir">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-email-input">Tanggal lahir</label>
-                                                                                                <input type="email" class="form-control" id="progresspill-email-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-phoneno-input">Jenis kelamin</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-phoneno-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-email-input">Agama</label>
-                                                                                                <input type="email" class="form-control" id="progresspill-email-input">
+                                                                                                <label class="form-label">Tanggal Lahir</label>
+                                                                                                <input type="text" class="form-control" id="datepicker-datetime-tanggallahir" name="tgllahir" placeholder="Tanggal lahir karyawan">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-phoneno-input">Status</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-phoneno-input">
+                                                                                                  <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Jenis Kelamin</label>
+                                                                                                    <select class="form-control" name="jeniskelamin" id="jenis-kelamin" placeholder="Jenis kelamin">
+                                                                                                        <option value="">Pilih jenis kelamin</option>
+                                                                                                        <option value="LK">Laki-Laki</option>
+                                                                                                        <option value="PR">Perempuan</option>
+                                                                                                    </select>
+                                                                                                </div>
                                                                                             </div>
+                                                                                        <div class="col-lg-6">
+                                                                                             <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Agama</label>
+                                                                                                    <select class="form-control" name="agama" id="agama" placeholder="Pilih agama karyawan">
+                                                                                                        <option value="">Pilih agama karyawan</option>
+                                                                                                        <option value="ISLAM">ISLAM </option>
+                                                                                                        <option value="HINDU">HINDU</option>
+                                                                                                        <option value="KRISTEN">KRISTEN</option>
+                                                                                                        <option value="KATOLIK">KATOLIK</option>
+                                                                                                        <option value="BUDHA">BUDHA</option>
+                                                                                                    </select>
+                                                                                                </div>
                                                                                         </div>
+                                                                                    </div>
+                                                                                    <div class="row">
+                                                                                         <div class="col-lg-6">
+                                                                                                  <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Marital</label>
+                                                                                                    <select class="form-control" name="idmd_marital" id="status" placeholder="Jenis kelamin">
+                                                                                                        <option value="">Pilih status karyawan</option>
+                                                                                                        <option value="BK">BK - Belum Kawin </option>
+                                                                                                        <option value="TK">TK - Cerai Hidup / Cerai Mati</option>
+                                                                                                        <option value="BS">BS - Bersuami (Orang Barata)</option>
+                                                                                                        <option value="K">K - Kawin</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-email-input">NIK</label>
-                                                                                                <input type="email" class="form-control" id="progresspill-email-input">
+                                                                                                <label for="progresspill-nik-input">NIK</label>
+                                                                                                <input type="number" class="form-control" placeholder="NIK" name="nik">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row">
                                                                                         <div class="col-lg-12">
                                                                                             <div class="mb-3">
-                                                                                                <label for="progresspill-address-input">Alamat sekarang</label>
-                                                                                                <textarea id="progresspill-address-input" class="form-control" rows="2"></textarea>
+                                                                                                <label for="progresspill-address-input">Alamat Sekarang</label>
+                                                                                                <textarea id="progresspill-address-input" name="alamatsekarang" class="form-control" rows="2" placeholder="Alamat sekarang"></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -194,112 +225,73 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-phoneno-input">No Hp</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-phoneno-input">
+                                                                                                <input type="number" name="nohp" class="form-control" id="" placeholder="No Hp">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-email-input">Email</label>
-                                                                                                <input type="email" class="form-control" id="progresspill-email-input">
+                                                                                                <input type="email" name="email" class="form-control" placeholder="Alamat email">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="row">
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-phoneno-input">Tgl. Masuk</label>
-                                                                                                <input type="text" class="form-control" id="progresspill-phoneno-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-lg-6">
-                                                                                            <div class="mb-3">
-                                                                                                <label for="progresspill-email-input">Tgl. Pengangkatan</label>
-                                                                                                <input type="email" class="form-control" id="progresspill-email-input">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </form>
                                                                                 <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                                                                    <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
+                                                                                    <li class="next"><a class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
                                                                                 </ul>
                                                                             </div>
-                                                                            <div class="tab-pane" id="progress-jabatan">
+                                                                            <div class="tab-pane" id="progress-educational-background">
                                                                                 <div>
                                                                                     <div class="text-center mb-4">
-                                                                                        <h5>INFORMASI JABATAN</h5>
-                                                                                        <p class="card-title-desc">Isi informasi jabatan karyawan</p>
+                                                                                        <h5>EDUCATIONAL BACKGROUND</h5>
+                                                                                        <p class="card-title-desc">Isi informasi pendidikan karyawan</p>
                                                                                     </div>
                                                                                     <form>
                                                                                         <div class="row">
-                                                                                             <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label class="form-label">Mulai Bekerja</label>
-                                                                                                    <select class="form-select">
-                                                                                                        <option selected>1</option>
-                                                                                                        <option value="AE">2</option>
-                                                                                                        <option value="VI">3</option>
-                                                                                                        <option value="MC">4</option>
-                                                                                                        <option value="DI">5</option>
+                                                                                             <div class="col-lg-4">
+                                                                                                  <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Tingkat Pendidikan</label>
+                                                                                                    <select class="form-control" name="levelpendidikan" id="pilih-pendidikan" placeholder="Pilih tingkat pendidikan">
+                                                                                                        <option value="">Pilih tingkat pendidikan</option>
+                                                                                                        <option value="SD">SD</option>
+                                                                                                        <option value="SMP">SMP</option>
+                                                                                                        <option value="SMA">SMA</option>
+                                                                                                        <option value="SMK">SMK</option>
+                                                                                                        <option value="Diploma 1">Diploma 1</option>
+                                                                                                        <option value="Diploma 2">Diploma 2</option>
+                                                                                                        <option value="Diploma 3">Diploma 3</option>
+                                                                                                        <option value="Diploma 4">Diploma 4</option>
+                                                                                                        <option value="Sarjana 1">Sarjana 1</option>
+                                                                                                        <option value="Sarjana 2">Sarjana 2</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
+                                                                                            <div class="col-lg-2">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Golongan Pendidikan</label>
+                                                                                                    <input type="text" class="form-control" id="golpend" name="golpend" placeholder="Golongan Pendidikan" readonly>
+                                                                                                </div>
+                                                                                            </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-vatno-input" class="form-label">Jadi Karyawan Tetap</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-vatno-input">
+                                                                                                    <label for="progresspill-fakultas" class="form-label">Fakultas/Jurusan</label>
+                                                                                                    <input type="text" class="form-control" id="progresspill-vatno-input" name="jurusan" placeholder="Fakultas/Jurusan">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-cstno-input" class="form-label">Status Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-cstno-input">
+                                                                                                    <label for="progresspill-institusi" class="form-label">Institusi</label>
+                                                                                                    <input type="text" class="form-control" name="institusi" id="progresspill-cstno-input" placeholder="Institusi">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-servicetax-input" class="form-label">Nama Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-servicetax-input">
-                                                                                                </div>
+                                                                                                <label class="form-label">Tahun Lulus</label>
+                                                                                                <input type="text" class="form-control" id="datepicker-datetime-lulus" name="tahunlulus" placeholder="Tahun Lulus">
                                                                                             </div>
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-companyuin-input" class="form-label">TMT Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-companyuin-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Satuan Organisasi</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Bagian</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Kategori Fungsi</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </form>
@@ -309,46 +301,172 @@
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="tab-pane" id="progress-company-document">
+                                                                            <div class="tab-pane" id="progress-career">
                                                                                 <div>
                                                                                     <div class="text-center mb-4">
-                                                                                        <h5>RENUMERASI</h5>
-                                                                                        <p class="card-title-desc">Isi informasi renumerasi karyawan</p>
+                                                                                        <h5>CAREER</h5>
+                                                                                        <p class="card-title-desc">Isi informasi karir karyawan</p>
+                                                                                    </div>  
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-tanggalmasuk">Tanggal Masuk</label>
+                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-tanggalmasuk">Lama Kerja</label>
+                                                                                                    <input type="text" class="form-control" id="lamakerja" 
+                                                                                                     name="lamakerja"  placeholder="Lama Kerja" readonly>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-pengangkatan">Tanggal Pengangkatan</label>
+                                                                                                    <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Satuan Organisasi</label>
+                                                                                                    <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih satuan organisasi">
+                                                                                                        
+                                                                                                        <option value="">Pilih Satuan Organisasi</option>
+                                                                                                        <?php foreach ($organisasi as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->namaorganisasi; ?></option>
+                                                                                                        <?php } ?>
+
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-4">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Bidang Organisasi</label>
+                                                                                                    <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih bagian">
+                                                                                                        <option value="">Pilih bagian</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                            <div class="col-lg-4">
+                                                                                                 <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label">Jabatan Organisasi</label>
+                                                                                                    <input id="NmBidang" name="NmBidang" type="hidden" class="form-control">
+                                                                                                    <select class="form-control" name="idmd_jabatan" id="idmd_jabatan" placeholder="Pilih jabatan">
+                                                                                                        <option value="">Pilih jabatan</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="row">
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
+                                                                                                    <select class="form-control" name="idmd_level" id="pilih-level" placeholder="Pilih level jabatan">
+
+                                                                                                        <option value="">Pilih level jabatan</option>
+                                                                                                        <?php foreach ($level as $data) {?>
+                                                                                                        <option value="<?php echo $data->level ?>"><?php echo $data->level ?> - <?php echo $data->namalevel ?></option>
+                                                                                                        <?php } ?>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                 <div class="mb-3">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
+                                                                                                    <select class="form-control" name="statusjabatan" id="statusjabatan" placeholder="Status Jabatan">
+                                                                                                        <option value="">Pilih status jabatan karyawan</option>
+                                                                                                        <option value="Definitif">Def. - Definitif</option>
+                                                                                                        <option value="Penganti Sementara">Pgs. - Penganti Sementara</option>
+                                                                                                        <option value="Pejabat Sementara">Pjs. - Pejabat Sementara</option>
+                                                                                                        <option value="Pelaksana Tugas">Plt. - Pelaksana Tugas</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                             
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
+                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan">
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Kategori Fungsi</label>
+                                                                                                    <select class="form-control" name="kategorifungsi" id="fungsi" placeholder="Pilih satuan organisasi">
+                                                                                                        <option value="">Pilih kategori fungsi</option>
+                                                                                                        <option value="Core">Core</option>
+                                                                                                        <option value="Support">Support</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
+                                                                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="progress-grade">
+                                                                                <div>
+                                                                                    <div class="text-center mb-4">
+                                                                                        <h5>GRADE</h5>
+                                                                                        <p class="card-title-desc">Isi informasi Grade karyawan</p>
                                                                                     </div>
-                                                                                    <form>   
                                                                                         <div class="row">
                                                                                              <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label class="form-label">Grade</label>
-                                                                                                    <select class="form-select">
-                                                                                                        <option selected>1</option>
-                                                                                                        <option value="AE">2</option>
-                                                                                                        <option value="VI">3</option>
-                                                                                                        <option value="MC">4</option>
-                                                                                                        <option value="DI">5</option>
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Konversi Baru</label>
+                                                                                                    <select class="form-control" name="idmd_grade" id="grade" placeholder="Grade">
+                                                                                                        <option value="">Pilih grade</option>
+                                                                                                        <?php foreach ($grade as $data) {?>
+                                                                                                        <option value="<?php echo $data->idmd_grade ?>"><?php echo $data->grade ?> - <?php echo $data->gajipokok ?></option>
+                                                                                                        <?php } ?>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-vatno-input" class="form-label">Tgl Mulai</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-vatno-input">
+                                                                                                    <label for="progresspill-tanggalmasuk">TMT Grade</label>
+                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+                                                                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
+                                                                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="progress-upah-berlaku">
+                                                                                <div>
+                                                                                    <div class="text-center mb-4">
+                                                                                        <h5>UPAH BERLAKU</h5>
+                                                                                        <p class="card-title-desc">Isi informasi upah berlaku karyawan</p>
+                                                                                    </div>
+
                                                                                         <div class="row">
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-cstno-input" class="form-label">Gaji Pokok Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-cstno-input">
+                                                                                                    <input type="text" class="form-control" id="currency-gaji-pokok" name="ub_gajipokokkonversi" placeholder="Isi gaji pokok konversi">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-servicetax-input" class="form-label">Tunjangan Kesejahteraan Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-servicetax-input">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-kesejahteraan-konversi" name="ub_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -356,188 +474,221 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-companyuin-input" class="form-label">Tunjangan Peralihan Upah Pokok(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-companyuin-input">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan" name="ub_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan-jabatan" name="ub_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <input type="text" class="form-control" id="tunjangan-peralihan" name="ub_tunjperalihan" placeholder="Isi tunjangan peralihan">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <input type="text" class="form-control" name="ub_tunjjabatan" id="tunjangan-jabatan" placeholder="Isi tunjangan jabatan">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Upah Pokok Berlaku(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="upah-pokok-berlaku" name="ub_upahpokokberlaku" placeholder="Isi upah pokok berlaku">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                           
+                                                                                           
+                                                                                        </div>
+                                                                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
+                                                                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="tab-pane" id="progress-upah-efisiensi">
+                                                                                <div>
+                                                                                    <div class="text-center mb-4">
+                                                                                        <h5>UPAH EFISIENSI</h5>
+                                                                                        <p class="card-title-desc">Isi informasi upah efisiensi karyawan</p>
+                                                                                    </div>
+                                                                                        <div class="row">
+                                                                                           <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Gaji Pokok Konversi(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-gaji-pokok-konversi" name="uf_gajipokokkonversi" placeholder="Isi gaji pokok konversi">
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tunjangan Kesejahteraan Konversi(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-kesejahteraan-konversi" name="uf_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tunjngan Peralihan Upah Pokok(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-upah-pokok" name="uf_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan Jabatan(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-jabatan" name="uf_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan">
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan" name="uf_tunjperalihan" placeholder="Isi tunjangan peralihan">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
+                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tunjangan Jabatan(Rp)</label>
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-jabatan" name="uf_tunjjabatan" placeholder="Isi tunjangan jabatan">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-lg-6">
+                                                                                                <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Upah Pokok Efisiensi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <input type="text" class="form-control" id="ue-upah-pokok-efisiensi" name="uf_upahpokokberlaku" placeholder="Isi upah pokok efisiensi">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Penyesuaian(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-penyesuaian" name="uf_tunjpenyesuaian" placeholder="isi tunjangan penyesuaian">
                                                                                                 </div>
                                                                                             </div>
-                                                                                           
                                                                                         </div>
-                                                                                    </form>
                                                                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
                                                                                         <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
+
                                                                             <div class="tab-pane" id="progress-efisiensi">
                                                                                 <div>
                                                                                     <div class="text-center mb-4">
                                                                                         <h5>EFISIENSI</h5>
-                                                                                        <p class="card-title-desc">Isi informasi upah efisiensi karyawan</p>
+                                                                                        <p class="card-title-desc">Isi informasi efisiensi karyawan</p>
                                                                                     </div>
-                                                                                    <form>  
+
                                                                                         <div class="row">
                                                                                            <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Status Keaktifan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Keaktifan</label>
+                                                                                                    <select class="form-control" name="statuskeaktifan" id="status-keaktifan" name="statuskeaktifan" placeholder="Pilih status keaktifan">
+                                                                                                        <option value="">Pilih status keaktifan</option>
+                                                                                                        <option value="A">A - Aktif</option>
+                                                                                                        <option value="NA">NA - Non Aktif</option>
+                                                                                                        
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Status di rumahkan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Dirumahkan</label>
+                                                                                                    <select class="form-control" name="statusdirumahkan" id="status-dirumahkan" placeholder="Pilih status dirumahkan">
+                                                                                                        <option value="">Pilih status dirumahkan</option>
+                                                                                                        <option value="-">-</option>
+                                                                                                        <option value="H">H</option>
+                                                                                                        
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Batch dirumahkan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Batch Dirumahkan</label>
+                                                                                                    <select class="form-control" name="batchdirumahkan" id="status-batch" placeholder="Pilih batch dirumahkan">
+                                                                                                        <option value="">Pilih batch dirumahkan</option>
+                                                                                                        <option value="I">I</option>
+                                                                                                        <option value="II">II</option>
+                                                                                                        <option value="III">III</option>
+                                                                                                        <option value="IIII">IIII</option>
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Tanggal dirumahkaan atau Aktif kembali</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="progresspill-pengangkatan">Tanggal Dirumahkan atau Aktif Kembali</label>
+                                                                                                    <input type="text" class="form-control" id="tanggal-dirumahkan" name="tgldirumahkan" placeholder="Isi tanggal di rumahkan atau Aktif kembali">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Kode Organisasi</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Aktifitas (Obsolete)</label>
+                                                                                                    <select class="form-control" name="aktivitasobsolete" id="aktifitasobsolete" placeholder="Pilih aktifitas">
+                                                                                                        <option value="">Pilih aktifitas</option>
+                                                                                                        <option value="TL">TL</option>
+                                                                                                        <option value="TTL">TTL</option>
+                                                                                                        <option value="TPEM">TPEM</option>
+                                                                                                        <option value="TADM">TADM</option>
+                                                                                                        
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Kode Bidang / Bagian</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Aktifitas 2022</label>
+                                                                                                    <select class="form-control" name="aktivitas2022" id="aktifitas2022" placeholder="Pilih aktifitas">
+                                                                                                        <option value="">Pilih aktifitas</option>
+                                                                                                        <option value="TL">TL</option>
+                                                                                                        <option value="TTL">TTL</option>
+                                                                                                        <option value="TPEM">TPEM</option>
+                                                                                                        <option value="TADM">TADM</option>
+                                                                                                        
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Aktifitas (obsolete)</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Sub Aktifitas</label>
+                                                                                                    <select class="form-control" name="subaktivitas" id="subaktifitas" placeholder="Pilih sub aktifitas">
+                                                                                                        <option value="">Pilih sub aktifitas</option>
+                                                                                                        <option value="BP">BP</option>
+                                                                                                        <option value="BPP">BPP</option>
+                                                                                                        
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Aktifitas 2022</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Status Kepegawaian</label>
+                                                                                                    <select class="form-control" name="statuskepegawaian" id="statuskepegawaian" placeholder="Pilih status kepegawaian">
+                                                                                                        <option value="">Pilih status kepegawaian</option>
+                                                                                                        <option value="KT">KT</option>
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Sub Aktifitas</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Status Kepegawaian</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Teknik atau Non Teknik</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-declaration-input" class="form-label">Golongan Pendidikan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-declaration-input">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                    <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                                                                        <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
-                                                                                        <li class="next"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()">Next <i class="bx bx-chevron-right ms-1"></i></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="tab-pane" id="progress-bank-detail">
-                                                                                <div>
-                                                                                    <div class="text-center mb-4">
-                                                                                        <h5>PENDIDIKAN</h5>
-                                                                                        <p class="card-title-desc">Isi informasi pendidikan karyawan</p>
-                                                                                    </div>
-                                                                                    <form>
-                                                                                        <div class="row">
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-namecard-input" class="form-label">Level Pendidikan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-namecard-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label class="form-label">Jurusan</label>
-                                                                                                    <select class="form-select">
-                                                                                                        <option selected>Pilih Jurusan Pendidikan</option>
-                                                                                                        <option value="AE">Teknik Industri</option>
-                                                                                                        <option value="VI">Teknik Informatika</option>
+                                                                                                    <label for="choices-single-no-sorting" class="form-label ">Teknik atau Non Teknik</label>
+                                                                                                    <select class="form-control" name="tekniknonteknik" id="tekniknonteknik" placeholder="Pilih status kepegawaian">
+                                                                                                        <option value="">Pilih teknik atau non Teknik</option>
+                                                                                                        <option value="Teknik">Teknik</option>
+                                                                                                        <option value="Non Teknik">Non Teknik</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-cardno-input" class="form-label">Institusi</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-cardno-input">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-lg-6">
-                                                                                                <div class="mb-3">
-                                                                                                    <label for="progresspill-expiration-input" class="form-label">Tahun Lulus</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-expiration-input">
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                    </form>
                                                                                     <ul class="pager wizard twitter-bs-wizard-pager-link">
                                                                                         <li class="previous"><a href="javascript: void(0);" class="btn btn-primary" onclick="nextTab()"><i class="bx bx-chevron-left me-1"></i> Previous</a></li>
-                                                                                        <li class="float-end"><a href="javascript: void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target=".confirmModal">Save
-                                                                                                Changes</a></li>
+                                                                                        <li class="float-end"><button id="submit" type="submit" class="btn btn-primary">Save Changes</button></li>
                                                                                     </ul>
                                                                                 </div>
                                                                             </div>
@@ -550,6 +701,7 @@
                                                         </div>
                                                         <!-- end col -->
                                                     </div>
+                                                    </form>
                                                     <!-- end row -->
                                                 </div>
                                             </div><!-- /.modal-content -->
@@ -604,7 +756,8 @@
                                               <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Overtime</a>
                                             </div>
                                         </div>
-                                    </div><!-- 
+                                    </div>
+                                    <!-- 
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingTwo">
                                             <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -620,20 +773,6 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingThree">
-                                            <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                Payroll
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                            <div class="list-group" id="list-tab" role="tablist">
-                                              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Attendance</a>
-                                              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Timeoff</a>
-                                              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Overtime</a>
-                                            </div>
-                                        </div>
-                                    </div>
                                      <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingFour">
                                             <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -666,6 +805,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-sm-auto order-1 order-sm-2">
+                                        <div class="d-flex align-items-start justify-content-end gap-2">
+                                            <div>
+                                                <button type="button" class="btn btn-light btn-label" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Update Data</button>
+                                            </div>
+                                            <div>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-link font-size-16 shadow-none text-muted dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
@@ -685,10 +837,10 @@
                                         <a class="nav-link px-3" data-bs-toggle="tab" href="#post" role="tab">UPAH BERLAKU</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#upah" role="tab">UPAH EFISIENSI</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#upahefisiensi" role="tab">UPAH EFISIENSI</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#efisiensi" role="tab">EFISIENSI</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#efisiensitab" role="tab">EFISIENSI</a>
                                     </li>
                                 </ul>
                             </div>
@@ -703,7 +855,7 @@
                                         <h5 class="card-title mb-0">Personal Background <?php echo $personaldata['nama'] ?></h5>
                                     </div>
                                     <div class="card-body">
-                                         <div>
+                                         <div class="mb-5">
                                             <div class="row justify-content-center mt-4">
                                                 <div class="col-xl-5">
                                                     <div class="mt-3">
@@ -899,7 +1051,7 @@
                                         <h5 class="card-title mb-0">Educational Background <?php echo $personaldata['nama'] ?></h5>
                                     </div>
                                     <div class="card-body">
-                                         <div>
+                                         <div class="mb-5">
                                             <div class="row justify-content-center mt-4">
                                                 <div class="col-xl-5">
                                                     <div class="mt-3">
@@ -997,7 +1149,7 @@
                                         <h5 class="card-title mb-0">Grade <?php echo $personaldata['nama']; ?></h5>
                                     </div>
                                      <div class="card-body">
-                                         <div>
+                                         <div class="mb-5">
                                             <div class="row justify-content-center mt-4">
                                                 <div class="col-xl-5">
                                                     <div class="mt-3">
@@ -1045,7 +1197,7 @@
                                         <h5 class="card-title mb-0">Career <?php echo $personaldata['nama'];?></h5>
                                     </div>
                                      <div class="card-body">
-                                         <div>
+                                         <div class="mb-5">
                                             <div class="row justify-content-center mt-4">
                                                 <div class="col-xl-5">
                                                     <div class="mt-3">
@@ -1166,186 +1318,413 @@
                             <div class="tab-pane" id="post" role="tabpanel">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Pendidikan Siti Maimunah</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div>
+                                        <h5 class="card-title mb-0">Upah Berlaku <?php echo $personaldata['nama']; ?></h5>
+                                    </div class="mb-5">
+                                     <div class="card-body">
+                                         <div class="mb-5">
                                             <div class="row justify-content-center mt-4">
-                                                <div class="col-xl-8">
-
-
-                                                    <div class="mt-5">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
-                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Project discussion with team</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0">24 Mar, 2020</p>
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Gaji Pokok Konversi(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_gajipokokkonversi']; ?></p>
                                                             </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="dropdown">
-                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
-                                                                    </a>
-                                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="pt-3">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Development
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 08 Comments
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                            <p class="text-muted">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
-
-                                                            
                                                         </div>
                                                     </div>
                                                     <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
 
-                                                    <hr class="my-5">
-
-                                                    <div>
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
-                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Beautiful Day with Friends</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0">10 Apr, 2020</p>
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Kesejahteraan Konversi(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_tunjkesejahteraankonversi']; ?></p>
                                                             </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="dropdown">
-                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
-                                                                    </a>
-                                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="position-relative mt-3">
-                                                            <img src="assets/images/small/img-3.jpg" alt="" class="img-thumbnail">
-                                                        </div>
-
-                                                        <div class="pt-3">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Project
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 12 Comments
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                            <p class="text-muted">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, aliquam quaerat voluptatem. Ut enim ad minima veniam, quis</p>
-
-                                                          
                                                         </div>
                                                     </div>
                                                     <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
 
-                                                    <hr class="my-5">
 
-                                                    <div>
+
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
-                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Drawing a sketch</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0">20 Mar, 2020</p>
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Peralihan Upah Pokok(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_tunjperalihanupahpokok']; ?></p>
                                                             </div>
-                                                            <div class="flex-shrink-0 ms-2">
-                                                                <div class="dropdown">
-                                                                    <a class="btn btn-link text-muted font-size-16 p-1 py-0 dropdown-toggle shadow-none" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                        <i class="bx bx-dots-horizontal-rounded"></i>
-                                                                    </a>
-                                                                    <ul class="dropdown-menu dropdown-menu-end">
-                                                                        <li><a class="dropdown-item" href="#">Action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="pt-3">
-                                                            <ul class="list-inline">
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-purchase-tag-alt align-middle text-muted me-1"></i> Project
-                                                                    </a>
-                                                                </li>
-                                                                <li class="list-inline-item me-3">
-                                                                    <a href="javascript: void(0);" class="text-muted">
-                                                                        <i class="bx bx-comment-dots align-middle text-muted me-1"></i> 12 Comments
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                            <p class="text-muted">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, aliquam quaerat voluptatem. Ut enim ad minima veniam, quis</p>
-
-                                                            
                                                         </div>
                                                     </div>
                                                     <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Peralihan Jabatan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_tunjperalihanjabatan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+                                             <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Peralihan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_tunjperalihan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Jabatan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_tunjjabatan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="col-xl-10">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Upah Pokok Berlaku(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['ub_upahpokokberlaku']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
                                                 </div>
                                                 <!-- end col -->
 
                                             </div>
                                             <!-- end row -->
 
-                                            <div class="row g-0 mt-4">
-                                                <div class="col-sm-6">
-                                                    <div>
-                                                        <p class="mb-sm-0">Showing 1 to 10 of 57 entries</p>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <div class="float-sm-end">
-                                                        <ul class="pagination mb-sm-0">
-                                                            <li class="page-item disabled">
-                                                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">1</a>
-                                                            </li>
-                                                            <li class="page-item active">
-                                                                <a href="#" class="page-link">2</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">3</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">4</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link">5</a>
-                                                            </li>
-                                                            <li class="page-item">
-                                                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- end row -->
+                                           
                                         </div>
                                     </div>
-                                    <!-- end card body -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end tab pane -->
+
+
+                            <div class="tab-pane" id="upahefisiensi" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Upah Efisiensi <?php echo $personaldata['nama']; ?></h5>
+                                    </div>
+                                     <div class="card-body">
+                                         <div class="mb-5">
+                                            <div class="row justify-content-center mt-4">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Gaji Pokok Konversi(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_gajipokokkonversi']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Kesejahteraan Konversi(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjkesejahteraankonversi']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+
+
+
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjngan Peralihan Upah Pokok(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjperalihanupahpokok']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Peralihan Jabatan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjperalihanjabatan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+                                             <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Peralihan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjperalihan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Jabatan(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjjabatan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Upah Pokok Efisiensi(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_upahpokokberlaku']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tunjangan Penyesuaian(Rp)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['uf_tunjpenyesuaian']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                            </div>
+                                            <!-- end row -->
+
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end tab pane -->
+
+                            <div class="tab-pane" id="efisiensitab" role="tabpanel">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Efisiensi <?php echo $personaldata['nama']; ?></h5>
+                                    </div>
+                                     <div class="card-body">
+                                         <div class="mb-5">
+                                            <div class="row justify-content-center mt-4">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Status Keaktifan</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['statuskeaktifan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Status Dirumahkan</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['statusdirumahkan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+
+
+
+                                            </div>
+                                            <!-- end row -->
+                                            <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Batch Dirumahkan</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['batchdirumahkan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tanggal Dirumahkan atau Aktif Kembali</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['tgldirumahkan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+
+                                            </div>
+                                            <!-- end row -->
+
+                                             <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Aktifitas (Obsolete)</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['aktivitasobsolete']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Aktifitas 2022</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['aktivitas2022']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Sub Aktifitas</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['subaktivitas']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Status Kepegawaian</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['statuskepegawaian']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                 <div class="col-xl-10">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Teknik atau Non Teknik</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['tekniknonteknik']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                            </div>
+                                            <!-- end row -->
+
+                                           
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- end card -->
                             </div>

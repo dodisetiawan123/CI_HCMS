@@ -30,4 +30,14 @@ class Data extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	//Jabatan
+	public function ceknpk()
+	{
+		header('Content-Type:application/json');
+		header('Access-Control-Allow-Origin: *');
+		$npk   = $this->input->post('npk');
+		$data = $this->db->query("SELECT npk FROM md_karyawan WHERE npk='$npk'")->result();
+		echo json_encode($data);
+	}
+
 }

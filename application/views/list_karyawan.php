@@ -74,7 +74,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertdata') ?>">
+                                                    <form enctype="multipart/form-data" name="karyawan" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertdata') ?>" onsubmit="return validateForm()">
                                                      <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="card">
@@ -158,7 +158,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-npk">NPK</label>
-                                                                                                <input type="number" class="form-control" id="npk" name="npk" placeholder="NPK" required>
+                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -829,6 +829,49 @@
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+<script type="text/javascript">
+    function checknpk(handleData){
+           var npk = $('#npk').val();
+           var urlnpk = '<?php echo site_url('data/ceknpk/') ?>'
+            $.ajax({
+                url: urlnpk,
+                method: "POST",
+                data: { npk: npk },
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                   handleData(data);
+                },
+                    error: function() {
+                        alert('Error occured');
+                    }
+            }
+
+            );
+
+    }
+    
+    function validateForm() {
+          let x = document.forms["karyawan"]["npk"].value;
+          if (x == "") {
+            alert("Formulir NPK harus di isi..!!");
+            return false;
+          }else{
+            checknpk(function(output){
+                if (!$.trim(output)){   
+                    
+                    return data = confirm("Simpan ke database?");
+                }
+                else{   
+                    alert("NPK sudah ada di database silahkan gunakan yang lain!! ");
+                    return data = false;
+                }
+            });
+            return data;
+          }
+
+        }
+</script>
 <script>
     function dateAgo(date) {
     var startDate = new Date(date);
