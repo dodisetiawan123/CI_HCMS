@@ -15,6 +15,13 @@
     <!-- twitter-bootstrap-wizard css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.css') ?>">
 
+    <!-- choices css -->
+    <link href="<?php echo base_url('assets/libs/choices.js/public/assets/styles/choices.min.css') ?>" rel="stylesheet" type="text/css" />
+    <!-- datepicker css -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/libs/flatpickr/flatpickr.min.css') ?>">
+    <!-- Sweet Alert-->
+    <link href="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css" />
+
     <?php include 'layouts/head-style.php'; ?>
 
 </head>
@@ -143,13 +150,13 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-nama-karyawan">Nama Karyawan</label>
-                                                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama karyawan">
+                                                                                                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama karyawan" value="<?php echo $personaldata['nama'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-npk">NPK</label>
-                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8">
+                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8" value="<?php echo $personaldata['npk'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -158,13 +165,13 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-tempat-lahir">Tempat Lahir</label>
-                                                                                                <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Tempat lahir">
+                                                                                                <input type="text" class="form-control" id="tempatlahir" name="tempatlahir" placeholder="Tempat lahir" value="<?php echo $personaldata['tempatlahir'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label class="form-label">Tanggal Lahir</label>
-                                                                                                <input type="text" class="form-control" id="datepicker-datetime-tanggallahir" name="tgllahir" placeholder="Tanggal lahir karyawan">
+                                                                                                <input type="text" class="form-control" id="datepicker-datetime-tanggallahir" name="tgllahir" placeholder="Tanggal lahir karyawan" value="<?php echo $personaldata['tgllahir'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -174,8 +181,8 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Jenis Kelamin</label>
                                                                                                     <select class="form-control" name="jeniskelamin" id="jenis-kelamin" placeholder="Jenis kelamin">
                                                                                                         <option value="">Pilih jenis kelamin</option>
-                                                                                                        <option value="LK">Laki-Laki</option>
-                                                                                                        <option value="PR">Perempuan</option>
+                                                                                                        <option value="LK" <?php if ($personaldata['jeniskelamin']=='LK') { echo "selected";} ?>>Laki-Laki</option>
+                                                                                                        <option value="PR" <?php if ($personaldata['jeniskelamin']=='PR') { echo "selected";} ?>>Perempuan</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -184,11 +191,11 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Agama</label>
                                                                                                     <select class="form-control" name="agama" id="agama" placeholder="Pilih agama karyawan">
                                                                                                         <option value="">Pilih agama karyawan</option>
-                                                                                                        <option value="ISLAM">ISLAM </option>
-                                                                                                        <option value="HINDU">HINDU</option>
-                                                                                                        <option value="KRISTEN">KRISTEN</option>
-                                                                                                        <option value="KATOLIK">KATOLIK</option>
-                                                                                                        <option value="BUDHA">BUDHA</option>
+                                                                                                        <option value="ISLAM" <?php if ($personaldata['agama']=='ISLAM') { echo "selected";} ?>>ISLAM </option>
+                                                                                                        <option value="HINDU" <?php if ($personaldata['agama']=='HINDU') { echo "selected";} ?>>HINDU</option>
+                                                                                                        <option value="KRISTEN" <?php if ($personaldata['agama']=='KRISTEN') { echo "selected";} ?>>KRISTEN</option>
+                                                                                                        <option value="KATOLIK" <?php if ($personaldata['agama']=='KATOLIK') { echo "selected";} ?>>KATOLIK</option>
+                                                                                                        <option value="BUDHA" <?php if ($personaldata['agama']=='BUDHA') { echo "selected";} ?>>BUDHA</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                         </div>
@@ -199,17 +206,17 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Marital</label>
                                                                                                     <select class="form-control" name="idmd_marital" id="status" placeholder="Jenis kelamin">
                                                                                                         <option value="">Pilih status karyawan</option>
-                                                                                                        <option value="BK">BK - Belum Kawin </option>
-                                                                                                        <option value="TK">TK - Cerai Hidup / Cerai Mati</option>
-                                                                                                        <option value="BS">BS - Bersuami (Orang Barata)</option>
-                                                                                                        <option value="K">K - Kawin</option>
+                                                                                                        <option value="BK" <?php if ($personaldata['idmd_marital']=='BK') { echo "selected";} ?>>BK - Belum Kawin </option>
+                                                                                                        <option value="TK" <?php if ($personaldata['idmd_marital']=='TK') { echo "selected";} ?>>TK - Cerai Hidup / Cerai Mati</option>
+                                                                                                        <option value="BS" <?php if ($personaldata['idmd_marital']=='BS') { echo "selected";} ?>>BS - Bersuami (Orang Barata)</option>
+                                                                                                        <option value="K" <?php if ($personaldata['idmd_marital']=='K') { echo "selected";} ?>>K - Kawin</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-nik-input">NIK</label>
-                                                                                                <input type="number" class="form-control" placeholder="NIK" name="nik">
+                                                                                                <input type="number" class="form-control" placeholder="NIK" name="nik" value="<?php echo $personaldata['nik'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -217,7 +224,7 @@
                                                                                         <div class="col-lg-12">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-address-input">Alamat Sekarang</label>
-                                                                                                <textarea id="progresspill-address-input" name="alamatsekarang" class="form-control" rows="2" placeholder="Alamat sekarang"></textarea>
+                                                                                                <textarea id="progresspill-address-input" name="alamatsekarang" class="form-control" rows="2" placeholder="Alamat sekarang"><?php echo $personaldata['alamatsekarang']; ?></textarea>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -225,13 +232,13 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-phoneno-input">No Hp</label>
-                                                                                                <input type="number" name="nohp" class="form-control" id="" placeholder="No Hp">
+                                                                                                <input type="number" name="nohp" class="form-control" id="" placeholder="No Hp" value="<?php echo $personaldata['nohp'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-email-input">Email</label>
-                                                                                                <input type="email" name="email" class="form-control" placeholder="Alamat email">
+                                                                                                <input type="email" name="email" class="form-control" placeholder="Alamat email" value="<?php echo $personaldata['email'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -1788,9 +1795,23 @@
 <!-- twitter-bootstrap-wizard js -->
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/libs/twitter-bootstrap-wizard/prettify.js') ?>"></script>
+<!-- choices js -->
+<script src="<?php echo base_url('assets/libs/choices.js/public/assets/scripts/choices.min.js') ?>"></script>
+
+<!-- Sweet Alerts js -->
+<script src="<?php echo base_url('assets/libs/sweetalert2/sweetalert2.min.js') ?>"></script>
+
+<!-- Datatable init js -->
+<script src="<?php echo base_url('assets/js/pages/datatables.init.js') ?>"></script>
+
+<!-- datepicker js -->
+<script src="<?php echo base_url('assets/libs/flatpickr/flatpickr.min.js') ?>"></script>
 
 <!-- form wizard init -->
 <script src="<?php echo base_url('assets/js/pages/form-wizard.init.js') ?>"></script>
+
+<!-- init js -->
+<script src="<?php echo base_url('assets/js/pages/form-advanced.init.js') ?>"></script>
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
