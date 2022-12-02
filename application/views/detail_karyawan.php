@@ -259,30 +259,50 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Tingkat Pendidikan</label>
                                                                                                     <select class="form-control" name="levelpendidikan" id="pilih-pendidikan" placeholder="Pilih tingkat pendidikan">
                                                                                                         <option value="">Pilih tingkat pendidikan</option>
-                                                                                                        <option value="SD">SD</option>
-                                                                                                        <option value="SMP">SMP</option>
-                                                                                                        <option value="SMA">SMA</option>
-                                                                                                        <option value="SMK">SMK</option>
-                                                                                                        <option value="Diploma 1">Diploma 1</option>
-                                                                                                        <option value="Diploma 2">Diploma 2</option>
-                                                                                                        <option value="Diploma 3">Diploma 3</option>
-                                                                                                        <option value="Diploma 4">Diploma 4</option>
-                                                                                                        <option value="Sarjana 1">Sarjana 1</option>
-                                                                                                        <option value="Sarjana 2">Sarjana 2</option>
+                                                                                                        <option value="SD" <?php if ($personaldata['levelpendidikan']=='SD') { echo "selected";} ?>>SD</option>
+                                                                                                        <option value="SMP" <?php if ($personaldata['levelpendidikan']=='SMP') { echo "selected";} ?>>SMP</option>
+                                                                                                        <option value="SMA" <?php if ($personaldata['levelpendidikan']=='SMA') { echo "selected";} ?>>SMA</option>
+                                                                                                        <option value="SMK" <?php if ($personaldata['levelpendidikan']=='SMK') { echo "selected";} ?>>SMK</option>
+                                                                                                        <option value="Diploma 1" <?php if ($personaldata['levelpendidikan']=='Diploma 1') { echo "selected";} ?>>Diploma 1</option>
+                                                                                                        <option value="Diploma 2" <?php if ($personaldata['levelpendidikan']=='Diploma 2') { echo "selected";} ?>>Diploma 2</option>
+                                                                                                        <option value="Diploma 3" <?php if ($personaldata['levelpendidikan']=='Diploma 3') { echo "selected";} ?>>Diploma 3</option>
+                                                                                                        <option value="Diploma 4" <?php if ($personaldata['levelpendidikan']=='Diploma 4') { echo "selected";} ?>>Diploma 4</option>
+                                                                                                        <option value="Sarjana 1" <?php if ($personaldata['levelpendidikan']=='Sarjana 1') { echo "selected";} ?>>Sarjana 1</option>
+                                                                                                        <option value="Sarjana 2" <?php if ($personaldata['levelpendidikan']=='Sarjana 2') { echo "selected";} ?>>Sarjana 2</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-2">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Golongan Pendidikan</label>
-                                                                                                    <input type="text" class="form-control" id="golpend" name="golpend" placeholder="Golongan Pendidikan" readonly>
+                                                                                                    <input type="text" class="form-control" id="golpend" name="golpend" placeholder="Golongan Pendidikan" value="<?php if ($personaldata['levelpendidikan']=='SD') {
+                                                                                                            echo 'A';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='SMP') {
+                                                                                                            echo 'B';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='SMA') {
+                                                                                                            echo 'C';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='SMK') {
+                                                                                                            echo 'C';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Diploma 1') {
+                                                                                                            echo 'C';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Diploma 2') {
+                                                                                                            echo 'C';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Diploma 3') {
+                                                                                                            echo 'D';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Diploma 4') {
+                                                                                                            echo 'E';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Sarjana 1') {
+                                                                                                            echo 'F';
+                                                                                                        } else if ($personaldata['levelpendidikan']=='Sarjana 2') {
+                                                                                                            echo 'G';
+                                                                                                        }  ?>" readonly>
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-fakultas" class="form-label">Fakultas/Jurusan</label>
-                                                                                                    <input type="text" class="form-control" id="progresspill-vatno-input" name="jurusan" placeholder="Fakultas/Jurusan">
+                                                                                                    <input type="text" class="form-control" id="progresspill-vatno-input" name="jurusan" placeholder="Fakultas/Jurusan" value="<?php echo $personaldata['jurusan'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -290,14 +310,14 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-institusi" class="form-label">Institusi</label>
-                                                                                                    <input type="text" class="form-control" name="institusi" id="progresspill-cstno-input" placeholder="Institusi">
+                                                                                                    <input type="text" class="form-control" name="institusi" id="progresspill-cstno-input" placeholder="Institusi" value="<?php echo $personaldata['institusi'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                 <label class="form-label">Tahun Lulus</label>
-                                                                                                <input type="text" class="form-control" id="datepicker-datetime-lulus" name="tahunlulus" placeholder="Tahun Lulus">
+                                                                                                <input type="text" class="form-control" id="datepicker-datetime-lulus" name="tahunlulus" placeholder="Tahun Lulus" value="<?php echo $personaldata['tahunlulus'] ?>">
                                                                                             </div>
                                                                                             </div>
                                                                                         </div>
@@ -318,7 +338,7 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">Tanggal Masuk</label>
-                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk">
+                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk" value="<?php echo $personaldata['jurusan'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-4">
@@ -1211,7 +1231,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tanggal Masuk</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['levelpendidikan']; ?></p>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['mulaibekerja']; ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1225,7 +1245,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Lama Kerja(Tanggal masuk)</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['golpend']; ?></p>
+                                                                <p class="font-size-13 text-muted mb-0"></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1243,7 +1263,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Tanggal Pengangkatan</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['jurusan']; ?></p>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['tgldiangkat']; ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1257,7 +1277,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Lama Kerja(Tanggal Pengangkatan)</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['institusi']; ?></p>
+                                                                <p class="font-size-13 text-muted mb-0"></p>
                                                             </div>
                                                         </div>
                                                     </div>
