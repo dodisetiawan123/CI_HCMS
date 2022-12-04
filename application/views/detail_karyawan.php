@@ -68,7 +68,7 @@
                                         <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="myExtraLargeModalLabel">Form Input Data Karyawan</h5>
+                                                    <h5 class="modal-title" id="myExtraLargeModalLabel">Form Update Data Karyawan</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
@@ -89,7 +89,7 @@
                                                                             </li>
                                                                             <li class="nav-item">
                                                                                 <a href="#progress-educational-background" class="nav-link" data-toggle="tab">
-                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Educational Background">
+                                                                                    <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top"     title="Educational Background">
                                                                                         <i class="bx bx-book-bookmark"></i>
                                                                                     </div>
                                                                                 </a>
@@ -338,7 +338,7 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">Tanggal Masuk</label>
-                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk" value="<?php echo $personaldata['jurusan'] ?>">
+                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk" value="<?php echo $personaldata['mulaibekerja'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-4">
@@ -351,7 +351,7 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-pengangkatan">Tanggal Pengangkatan</label>
-                                                                                                    <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan">
+                                                                                                    <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan" value="<?php echo $personaldata['tgldiangkat'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -362,6 +362,8 @@
                                                                                                     <input id="NmSatminkal" name="NmSatminkal" type="hidden" class="form-control">
                                                                                                     <select class="form-control" name="idmd_organisasi" id="idmd_organisasi" placeholder="Pilih satuan organisasi">
                                                                                                         
+                                                                                                        
+                                                                                                        <option value="<?php echo $personaldata['idmd_organisasi'] ?>" selected><?php echo $personaldata['namaorganisasi'] ?></option>
                                                                                                         <option value="">Pilih Satuan Organisasi</option>
                                                                                                         <?php foreach ($organisasi as $data) {?>
                                                                                                         <option value="<?php echo $data->idmd_organisasi; ?>"><?php echo $data->namaorganisasi; ?></option>
@@ -374,6 +376,7 @@
                                                                                                 <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Bidang Organisasi</label>
                                                                                                     <select class="form-control" name="idmd_bidang" id="idmd_bidang" placeholder="Pilih bagian">
+                                                                                                        <option value="<?php echo $personaldata['idmd_bidang'] ?>" selected><?php echo $personaldata['namabidang'] ?></option>
                                                                                                         <option value="">Pilih bagian</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -384,7 +387,7 @@
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label">Jabatan Organisasi</label>
                                                                                                     <input id="NmBidang" name="NmBidang" type="hidden" class="form-control">
-                                                                                                    <select class="form-control" name="idmd_jabatan" id="idmd_jabatan" placeholder="Pilih jabatan">
+                                                                                                    <select class="form-control" name="idmd_jabatan" id="idmd_jabatan" placeholder="Pilih jabatan"><option value="<?php echo $personaldata['idmd_jabatan'] ?>" selected><?php echo $personaldata['namajabatan'] ?></option>
                                                                                                         <option value="">Pilih jabatan</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -396,7 +399,7 @@
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
                                                                                                     <select class="form-control" name="idmd_level" id="pilih-level" placeholder="Pilih level jabatan">
-
+                                                                                                        <option value="<?php echo $personaldata['level'] ?>" selected><?php echo $personaldata['level'].' - '.$personaldata['namalevel'] ?></option>
                                                                                                         <option value="">Pilih level jabatan</option>
                                                                                                         <?php foreach ($level as $data) {?>
                                                                                                         <option value="<?php echo $data->level ?>"><?php echo $data->level ?> - <?php echo $data->namalevel ?></option>
@@ -408,6 +411,7 @@
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
                                                                                                     <select class="form-control" name="statusjabatan" id="statusjabatan" placeholder="Status Jabatan">
+                                                                                                        <option value="<?php echo $personaldata['statusjabatan'] ?>" selected><?php echo $personaldata['statusjabatan'] ?></option>
                                                                                                         <option value="">Pilih status jabatan karyawan</option>
                                                                                                         <option value="Definitif">Def. - Definitif</option>
                                                                                                         <option value="Penganti Sementara">Pgs. - Penganti Sementara</option>
@@ -422,7 +426,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan">
+                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan" value="<?php echo $personaldata['tglmulai'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
@@ -431,6 +435,7 @@
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Kategori Fungsi</label>
                                                                                                     <select class="form-control" name="kategorifungsi" id="fungsi" placeholder="Pilih satuan organisasi">
                                                                                                         <option value="">Pilih kategori fungsi</option>
+                                                                                                        <option value="<?php echo $personaldata['kategorifungsi'] ?>" selected><?php echo $personaldata['kategorifungsi'] ?></option>
                                                                                                         <option value="Core">Core</option>
                                                                                                         <option value="Support">Support</option>
                                                                                                     </select>
@@ -1835,6 +1840,203 @@
 
 
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+
+
+<script type="text/javascript">
+    function checknpk(handleData){
+           var npk = $('#npk').val();
+           var urlnpk = '<?php echo site_url('data/ceknpk/') ?>'
+            $.ajax({
+                url: urlnpk,
+                method: "POST",
+                data: { npk: npk },
+                async: false,
+                dataType: 'json',
+                success: function (data) {
+                   handleData(data);
+                },
+                    error: function() {
+                        alert('Error occured');
+                    }
+            }
+
+            );
+
+    }
+    
+    function validateForm() {
+          let x = document.forms["karyawan"]["npk"].value;
+          if (x == "") {
+            alert("Formulir NPK harus di isi..!!");
+            return false;
+          }else{
+            checknpk(function(output){
+                if (!$.trim(output)){   
+                    
+                    return data = confirm("Simpan ke database?");
+                }
+                else{   
+                    alert("NPK sudah ada di database silahkan gunakan yang lain!! ");
+                    return data = false;
+                }
+            });
+            return data;
+          }
+
+        }
+</script>
+<script>
+    function dateAgo(date) {
+    var startDate = new Date(date);
+    var diffDate = new Date(new Date() - startDate);
+    return ((diffDate.toISOString().slice(0, 4) - 1970) + " Tahun " +
+        diffDate.getMonth() + " Bulan " + (diffDate.getDate()-1) + " Hari");
+    }
+
+    $('#datepicker-datetime-tanggalmasuk').change(function () {
+        var tgl = $('#datepicker-datetime-tanggalmasuk').val();
+        $('#lamakerja').val(dateAgo(tgl));
+
+    });
+
+    const isEmpty = str => !str.trim().length;
+
+    document.getElementById("datepicker-datetime-tanggalmasuk").addEventListener("input", function() {
+      if( isEmpty(this.value) ) {
+        $('#lamakerja').val('');
+      }
+    });
+</script>
+        
+<script>
+    $('#pilih-pendidikan').change(function () {
+        var pendidikan = $('#pilih-pendidikan').find('option:selected').val();
+        if (pendidikan=='SD') {
+            var value = 'A'
+        } else if (pendidikan=='SMP') {
+            var value = 'B'
+        } else if (pendidikan=='SMA') {
+            var value = 'C'
+        } else if (pendidikan=='SMK') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 1') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 2') {
+            var value = 'C'
+        } else if (pendidikan=='Diploma 3') {
+            var value = 'D'
+        } else if (pendidikan=='Diploma 4') {
+            var value = 'E'
+        } else if (pendidikan=='Sarjana 1') {
+            var value = 'F'
+        } else if (pendidikan=='Sarjana 2') {
+            var value = 'G'
+        } 
+        $('#golpend').val(value);
+
+    });
+</script>
+
+<script>
+     <?php if ($this->session->flashdata('done')) {?>
+       $(window).on('load', function() {
+            Swal.fire({
+            position: 'top-midle',
+            icon: 'success',
+            title: 'Data berhasil di simpan',
+            showConfirmButton: false,
+            timer: 1500
+            })
+        });
+    <?php } ?>
+</script>
+
+<script type="text/javascript">
+
+    const bidang = new Choices('#idmd_bidang', {
+    shouldSort: false,placeholder: true
+    });
+    
+    const jabatan = new Choices('#idmd_jabatan', {
+    shouldSort: false,placeholder: true
+    });
+
+
+    var urlbidang = '<?php echo site_url('data/getbidang') ?>';
+    var urljabatan = '<?php echo site_url('data/getjabatan') ?>';
+
+    $('#idmd_organisasi').change(function () {
+        bidang.clearChoices();
+        jabatan.clearChoices();
+        var id = $('#idmd_organisasi').find('option:selected').val();
+        $('#NmSatminkal').val(id);
+        $.ajax({
+            url: urlbidang,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                bidang.setChoices([{
+                          value: '',
+                          label: 'Pilih bidang',
+                          selected:true,
+                          disabled: true
+                        }]);
+                jabatan.setChoices([{
+                          value: '',
+                          label: 'Pilih bagian',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    bidang.setChoices([{
+                          value: data[i].idmd_bidang,
+                          label: data[i].namabidang
+                        }]);
+
+
+
+                }
+
+            }
+        });
+    });
+
+     $('#idmd_bidang').change(function () {
+        jabatan.clearChoices();
+        var id = $('#idmd_bidang').find('option:selected').val();
+        $('#NmBidang').val(id);
+        $.ajax({
+            url: urljabatan,
+            method: "POST",
+            data: { id: id },
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                jabatan.setChoices([{
+                          value: '',
+                          label: 'Pilih jabatan',
+                          selected:true,
+                          disabled: true
+                        }]);
+                var i;
+                for (i = 0; i < data.length; i++) {
+                    jabatan.setChoices([{
+                          value: data[i].idmd_jabatan,
+                          label: data[i].namajabatan
+                        }]);
+
+                }
+
+            }
+        });
+    });
+
+
+    
+</script>
 
 </body>
 

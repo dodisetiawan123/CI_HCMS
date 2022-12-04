@@ -291,6 +291,10 @@ class Admin extends CI_Controller {
 			echo "Hayo mau ngapainnn";
 			exit;
 		}else{
+			$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+			$this->data['level'] = $this->data_karyawan_model->get_level();
+			$this->data['grade'] = $this->data_karyawan_model->get_grade();
+			$this->data['organisasi'] = $this->data_karyawan_model->get_organisasi();
 			$this->data['personaldata'] = $this->data_karyawan_model->getpersonaldata($npk);
 			$this->load->view('detail_karyawan', $this->data);
 		}
