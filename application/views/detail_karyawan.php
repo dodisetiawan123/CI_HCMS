@@ -72,7 +72,7 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form enctype="multipart/form-data" name="karyawan" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/insertdata') ?>" onsubmit="return validateForm()">
+                                                    <form enctype="multipart/form-data" name="karyawan" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/updatedata/'.$personaldata['npk']) ?>" onsubmit="return validateForm()">
                                                      <div class="row">
                                                         <div class="col-lg-12">
                                                             <div class="card">
@@ -156,7 +156,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-npk">NPK</label>
-                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8" value="<?php echo $personaldata['npk'] ?>">
+                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8" value="<?php echo $personaldata['npk'] ?>" readonly>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -399,10 +399,11 @@
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Level Jabatan</label>
                                                                                                     <select class="form-control" name="idmd_level" id="pilih-level" placeholder="Pilih level jabatan">
-                                                                                                        <option value="<?php echo $personaldata['level'] ?>" selected><?php echo $personaldata['level'].' - '.$personaldata['namalevel'] ?></option>
                                                                                                         <option value="">Pilih level jabatan</option>
                                                                                                         <?php foreach ($level as $data) {?>
-                                                                                                        <option value="<?php echo $data->level ?>"><?php echo $data->level ?> - <?php echo $data->namalevel ?></option>
+                                                                                                        <option value="<?php echo $data->idmd_level ?>" <?php if ($data->idmd_level == $personaldata['idmd_level']): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>><?php echo $data->level ?> - <?php echo $data->namalevel ?></option>
                                                                                                         <?php } ?>
                                                                                                     </select>
                                                                                                 </div>
@@ -411,12 +412,19 @@
                                                                                                  <div class="mb-3">
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Jabatan</label>
                                                                                                     <select class="form-control" name="statusjabatan" id="statusjabatan" placeholder="Status Jabatan">
-                                                                                                        <option value="<?php echo $personaldata['statusjabatan'] ?>" selected><?php echo $personaldata['statusjabatan'] ?></option>
                                                                                                         <option value="">Pilih status jabatan karyawan</option>
-                                                                                                        <option value="Definitif">Def. - Definitif</option>
-                                                                                                        <option value="Penganti Sementara">Pgs. - Penganti Sementara</option>
-                                                                                                        <option value="Pejabat Sementara">Pjs. - Pejabat Sementara</option>
-                                                                                                        <option value="Pelaksana Tugas">Plt. - Pelaksana Tugas</option>
+                                                                                                        <option value="Definitif" <?php if ($personaldata['statusjabatan'] == 'Definitif'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Def. - Definitif</option>
+                                                                                                        <option value="Penganti Sementara" <?php if ($personaldata['statusjabatan'] == 'Penganti Sementara'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Pgs. - Penganti Sementara</option>
+                                                                                                        <option value="Pejabat Sementara" <?php if ($personaldata['statusjabatan'] == 'Pejabat Sementara'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Pjs. - Pejabat Sementara</option>
+                                                                                                        <option value="Pelaksana Tugas" <?php if ($personaldata['statusjabatan'] == 'Pelaksana Tugas'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Plt. - Pelaksana Tugas</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -435,9 +443,12 @@
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Kategori Fungsi</label>
                                                                                                     <select class="form-control" name="kategorifungsi" id="fungsi" placeholder="Pilih satuan organisasi">
                                                                                                         <option value="">Pilih kategori fungsi</option>
-                                                                                                        <option value="<?php echo $personaldata['kategorifungsi'] ?>" selected><?php echo $personaldata['kategorifungsi'] ?></option>
-                                                                                                        <option value="Core">Core</option>
-                                                                                                        <option value="Support">Support</option>
+                                                                                                        <option value="Core" <?php if ($personaldata['kategorifungsi'] == 'Core'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Core</option>
+                                                                                                        <option value="Support" <?php if ($personaldata['kategorifungsi'] == 'Support'): ?>
+                                                                                                            selected
+                                                                                                        <?php endif ?>>Support</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -461,7 +472,9 @@
                                                                                                     <select class="form-control" name="idmd_grade" id="grade" placeholder="Grade">
                                                                                                         <option value="">Pilih grade</option>
                                                                                                         <?php foreach ($grade as $data) {?>
-                                                                                                        <option value="<?php echo $data->idmd_grade ?>"><?php echo $data->grade ?> - <?php echo $data->gajipokok ?></option>
+                                                                                                        <option value="<?php echo $data->idmd_grade ?>" <?php if ($data->idmd_grade==$personaldata['idmd_grade']): ?>selected
+                                                                                                            
+                                                                                                        <?php endif ?>><?php echo $data->grade ?> - <?php echo $data->gajipokok ?></option>
                                                                                                         <?php } ?>
                                                                                                     </select>
                                                                                                 </div>
@@ -470,7 +483,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">TMT Grade</label>
-                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade">
+                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade" value="<?php echo $personaldata['tgldiangkatgrade'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -491,14 +504,14 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-cstno-input" class="form-label">Gaji Pokok Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="currency-gaji-pokok" name="ub_gajipokokkonversi" placeholder="Isi gaji pokok konversi">
+                                                                                                    <input type="text" class="form-control" id="currency-gaji-pokok" name="ub_gajipokokkonversi" placeholder="Isi gaji pokok konversi" value="<?php echo $personaldata['ub_gajipokokkonversi'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-servicetax-input" class="form-label">Tunjangan Kesejahteraan Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-kesejahteraan-konversi" name="ub_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-kesejahteraan-konversi" name="ub_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi" value="<?php echo $personaldata['ub_tunjkesejahteraankonversi'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -506,35 +519,35 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-companyuin-input" class="form-label">Tunjangan Peralihan Upah Pokok(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan" name="ub_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan" name="ub_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok" value="<?php echo $personaldata['ub_tunjperalihanupahpokok'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan-jabatan" name="ub_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan">
+                                                                                                    <input type="text" class="form-control" id="currency-tunjangan-peralihan-jabatan" name="ub_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan" value="<?php echo $personaldata['ub_tunjperalihanjabatan'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="tunjangan-peralihan" name="ub_tunjperalihan" placeholder="Isi tunjangan peralihan">
+                                                                                                    <input type="text" class="form-control" id="tunjangan-peralihan" name="ub_tunjperalihan" placeholder="Isi tunjangan peralihan" value="<?php echo $personaldata['ub_tunjperalihan'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" name="ub_tunjjabatan" id="tunjangan-jabatan" placeholder="Isi tunjangan jabatan">
+                                                                                                    <input type="text" class="form-control" name="ub_tunjjabatan" id="tunjangan-jabatan" placeholder="Isi tunjangan jabatan" value="<?php echo $personaldata['ub_tunjjabatan'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Upah Pokok Berlaku(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="upah-pokok-berlaku" name="ub_upahpokokberlaku" placeholder="Isi upah pokok berlaku">
+                                                                                                    <input type="text" class="form-control" id="upah-pokok-berlaku" name="ub_upahpokokberlaku" placeholder="Isi upah pokok berlaku" value="<?php echo $personaldata['ub_upahpokokberlaku'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                            
@@ -556,51 +569,51 @@
                                                                                            <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Gaji Pokok Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-gaji-pokok-konversi" name="uf_gajipokokkonversi" placeholder="Isi gaji pokok konversi">
+                                                                                                    <input type="text" class="form-control" id="ue-gaji-pokok-konversi" name="uf_gajipokokkonversi" placeholder="Isi gaji pokok konversi" value="<?php echo $personaldata['uf_gajipokokkonversi']  ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Kesejahteraan Konversi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-kesejahteraan-konversi" name="uf_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-kesejahteraan-konversi" name="uf_tunjkesejahteraankonversi" placeholder="Isi tunjangan kesejahteraan konversi" value="<?php echo $personaldata['uf_tunjkesejahteraankonversi'] ?>" >
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjngan Peralihan Upah Pokok(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-upah-pokok" name="uf_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-upah-pokok" name="uf_tunjperalihanupahpokok" placeholder="Isi tunjangan peralihan upah pokok" value="<?php echo $personaldata['uf_tunjperalihanupahpokok'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-jabatan" name="uf_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan-jabatan" name="uf_tunjperalihanjabatan" placeholder="Isi tunjangan peralihan jabatan" value="<?php echo $personaldata['uf_tunjperalihanjabatan'] ?>">
                                                                                                 </div>
                                                                                             </div>
 
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Peralihan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan" name="uf_tunjperalihan" placeholder="Isi tunjangan peralihan">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-peralihan" name="uf_tunjperalihan" placeholder="Isi tunjangan peralihan" value="<?php echo $personaldata['uf_tunjperalihan'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Jabatan(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-jabatan" name="uf_tunjjabatan" placeholder="Isi tunjangan jabatan">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-jabatan" name="uf_tunjjabatan" placeholder="Isi tunjangan jabatan" value="<?php echo $personaldata['uf_tunjjabatan'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Upah Pokok Efisiensi(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-upah-pokok-efisiensi" name="uf_upahpokokberlaku" placeholder="Isi upah pokok efisiensi">
+                                                                                                    <input type="text" class="form-control" id="ue-upah-pokok-efisiensi" name="uf_upahpokokberlaku" placeholder="Isi upah pokok efisiensi" value="<?php echo $personaldata['uf_upahpokokberlaku'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">Tunjangan Penyesuaian(Rp)</label>
-                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-penyesuaian" name="uf_tunjpenyesuaian" placeholder="isi tunjangan penyesuaian">
+                                                                                                    <input type="text" class="form-control" id="ue-tunjangan-penyesuaian" name="uf_tunjpenyesuaian" placeholder="isi tunjangan penyesuaian" value="<?php echo $personaldata['uf_tunjpenyesuaian'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -624,8 +637,12 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Keaktifan</label>
                                                                                                     <select class="form-control" name="statuskeaktifan" id="status-keaktifan" name="statuskeaktifan" placeholder="Pilih status keaktifan">
                                                                                                         <option value="">Pilih status keaktifan</option>
-                                                                                                        <option value="A">A - Aktif</option>
-                                                                                                        <option value="NA">NA - Non Aktif</option>
+                                                                                                        <option value="A" <?php if ($personaldata['statuskeaktifan']=='A'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>A - Aktif</option>
+                                                                                                        <option value="NA" <?php if ($personaldata['statuskeaktifan']=='NA'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>NA - Non Aktif</option>
                                                                                                         
                                                                                                     </select>
                                                                                                 </div>
@@ -636,8 +653,12 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Dirumahkan</label>
                                                                                                     <select class="form-control" name="statusdirumahkan" id="status-dirumahkan" placeholder="Pilih status dirumahkan">
                                                                                                         <option value="">Pilih status dirumahkan</option>
-                                                                                                        <option value="-">-</option>
-                                                                                                        <option value="H">H</option>
+                                                                                                        <option value="-" <?php if ($personaldata['statusdirumahkan']=='-'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>-</option>
+                                                                                                        <option value="H" <?php if ($personaldata['statusdirumahkan']=='H'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>H</option>
                                                                                                         
                                                                                                     </select>
                                                                                                 </div>
@@ -648,17 +669,25 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Batch Dirumahkan</label>
                                                                                                     <select class="form-control" name="batchdirumahkan" id="status-batch" placeholder="Pilih batch dirumahkan">
                                                                                                         <option value="">Pilih batch dirumahkan</option>
-                                                                                                        <option value="I">I</option>
-                                                                                                        <option value="II">II</option>
-                                                                                                        <option value="III">III</option>
-                                                                                                        <option value="IIII">IIII</option>
+                                                                                                        <option value="I" <?php if ($personaldata['batchdirumahkan']=='I'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>I</option>
+                                                                                                        <option value="II" <?php if ($personaldata['statusdirumahkan']=='II'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>II</option>
+                                                                                                        <option value="III" <?php if ($personaldata['statusdirumahkan']=='III'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>III</option>
+                                                                                                        <option value="IIII" <?php if ($personaldata['statusdirumahkan']=='IIII'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>IIII</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-pengangkatan">Tanggal Dirumahkan atau Aktif Kembali</label>
-                                                                                                    <input type="text" class="form-control" id="tanggal-dirumahkan" name="tgldirumahkan" placeholder="Isi tanggal di rumahkan atau Aktif kembali">
+                                                                                                    <input type="text" class="form-control" id="tanggal-dirumahkan" name="tgldirumahkan" placeholder="Isi tanggal di rumahkan atau Aktif kembali" value="<?php echo $personaldata['tgldirumahkan'] ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
@@ -666,10 +695,18 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Aktifitas (Obsolete)</label>
                                                                                                     <select class="form-control" name="aktivitasobsolete" id="aktifitasobsolete" placeholder="Pilih aktifitas">
                                                                                                         <option value="">Pilih aktifitas</option>
-                                                                                                        <option value="TL">TL</option>
-                                                                                                        <option value="TTL">TTL</option>
-                                                                                                        <option value="TPEM">TPEM</option>
-                                                                                                        <option value="TADM">TADM</option>
+                                                                                                        <option value="TL" <?php if ($personaldata['aktivitasobsolete']=='TL'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TL</option>
+                                                                                                        <option value="TTL" <?php if ($personaldata['aktivitasobsolete']=='TTL'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TTL</option>
+                                                                                                        <option value="TPEM" <?php if ($personaldata['aktivitasobsolete']=='TPEM'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TPEM</option>
+                                                                                                        <option value="TADM" <?php if ($personaldata['aktivitasobsolete']=='TADM'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TADM</option>
                                                                                                         
                                                                                                     </select>
                                                                                                 </div>
@@ -679,10 +716,18 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Aktifitas 2022</label>
                                                                                                     <select class="form-control" name="aktivitas2022" id="aktifitas2022" placeholder="Pilih aktifitas">
                                                                                                         <option value="">Pilih aktifitas</option>
-                                                                                                        <option value="TL">TL</option>
-                                                                                                        <option value="TTL">TTL</option>
-                                                                                                        <option value="TPEM">TPEM</option>
-                                                                                                        <option value="TADM">TADM</option>
+                                                                                                        <option value="TL" <?php if ($personaldata['aktivitas2022']=='TL'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TL</option>
+                                                                                                        <option value="TTL" <?php if ($personaldata['aktivitas2022']=='TTL'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TTL</option>
+                                                                                                        <option value="TPEM" <?php if ($personaldata['aktivitas2022']=='TPEM'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TPEM</option>
+                                                                                                        <option value="TADM" <?php if ($personaldata['aktivitas2022']=='TADM'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>TADM</option>
                                                                                                         
                                                                                                     </select>
                                                                                                 </div>
@@ -692,8 +737,12 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Sub Aktifitas</label>
                                                                                                     <select class="form-control" name="subaktivitas" id="subaktifitas" placeholder="Pilih sub aktifitas">
                                                                                                         <option value="">Pilih sub aktifitas</option>
-                                                                                                        <option value="BP">BP</option>
-                                                                                                        <option value="BPP">BPP</option>
+                                                                                                        <option value="BP" <?php if ($personaldata['subaktivitas']=='BP'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>BP</option>
+                                                                                                        <option value="BPP" <?php if ($personaldata['subaktivitas']=='BPP'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>BPP</option>
                                                                                                         
                                                                                                     </select>
                                                                                                 </div>
@@ -703,7 +752,9 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Status Kepegawaian</label>
                                                                                                     <select class="form-control" name="statuskepegawaian" id="statuskepegawaian" placeholder="Pilih status kepegawaian">
                                                                                                         <option value="">Pilih status kepegawaian</option>
-                                                                                                        <option value="KT">KT</option>
+                                                                                                        <option value="KT" <?php if ($personaldata['statuskepegawaian']=='KT'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>KT</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -712,8 +763,12 @@
                                                                                                     <label for="choices-single-no-sorting" class="form-label ">Teknik atau Non Teknik</label>
                                                                                                     <select class="form-control" name="tekniknonteknik" id="tekniknonteknik" placeholder="Pilih status kepegawaian">
                                                                                                         <option value="">Pilih teknik atau non Teknik</option>
-                                                                                                        <option value="Teknik">Teknik</option>
-                                                                                                        <option value="Non Teknik">Non Teknik</option>
+                                                                                                        <option value="Teknik" <?php if ($personaldata['tekniknonteknik']=='Teknik'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>Teknik</option>
+                                                                                                        <option value="Non Teknik" <?php if ($personaldata['tekniknonteknik']=='Non Teknik'): ?>
+                                                                                                          selected  
+                                                                                                        <?php endif ?>>Non Teknik</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -854,10 +909,10 @@
 
                                 <ul class="nav nav-tabs-custom card-header-tabs border-top mt-4" id="pills-tab" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">PERSONAL BACKGROUND</a>
+                                        <a class="nav-link px-3 active" data-bs-toggle="tab" href="#overview" role="tab">PERSONAL</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#informasi" role="tab">EDUCATIONAL BACKGROUND</a>
+                                        <a class="nav-link px-3" data-bs-toggle="tab" href="#informasi" role="tab">EDUCATIONAL</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link px-3" data-bs-toggle="tab" href="#about" role="tab">CAREER</a>
@@ -1049,7 +1104,7 @@
                                                     <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
-                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Alamat</a></h5>
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Alamat Sekarang</a></h5>
                                                                 <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['alamatsekarang']; ?></p>
                                                             </div>
                                                         </div>
@@ -1188,7 +1243,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Konversi Grade</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['idmd_grade']; ?></p>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['grade']; ?> - <?php echo $personaldata['gajipokok']; ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1250,7 +1305,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Lama Kerja(Tanggal masuk)</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"></p>
+                                                                <p id="lamakerjamasuk" class="font-size-13 text-muted mb-0"></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1282,7 +1337,7 @@
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Lama Kerja(Tanggal Pengangkatan)</a></h5>
-                                                                <p class="font-size-13 text-muted mb-0"></p>
+                                                                <p id="lamakerjaangkat" class="font-size-13 text-muted mb-0"></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1294,7 +1349,7 @@
                                             <!-- end row -->
 
                                              <div class="row justify-content-center">
-                                                <div class="col-xl-5">
+                                                <div class="col-xl-3">
                                                     <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
@@ -1308,7 +1363,7 @@
                                                 </div>
                                                 <!-- end col -->
 
-                                                 <div class="col-xl-5">
+                                                 <div class="col-xl-4">
                                                     <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
@@ -1322,12 +1377,44 @@
                                                 </div>
                                                 <!-- end col -->
 
-                                                <div class="col-xl-10">
+                                                <div class="col-xl-3">
                                                     <div class="mt-3">
                                                         <div class="d-flex align-items-start">
                                                             <div class="flex-grow-1 overflow-hidden">
                                                                 <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Jabatan Organisasi</a></h5>
                                                                 <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['namajabatan']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                            </div>
+                                            <!-- end row -->
+
+                                                <div class="row justify-content-center">
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Level Jabatan</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['level']; ?> - <?php echo $personaldata['namalevel']; ?></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- end post -->
+                                                    <hr class="mt-1">
+                                                </div>
+                                                <!-- end col -->
+
+                                                <div class="col-xl-5">
+                                                    <div class="mt-3">
+                                                        <div class="d-flex align-items-start">
+                                                            <div class="flex-grow-1 overflow-hidden">
+                                                                <h5 class="font-size-14 text-truncate"><a href="#" class="text-dark">Status Jabatan</a></h5>
+                                                                <p class="font-size-13 text-muted mb-0"><?php echo $personaldata['statusjabatan']; ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1870,22 +1957,20 @@
             alert("Formulir NPK harus di isi..!!");
             return false;
           }else{
-            checknpk(function(output){
-                if (!$.trim(output)){   
-                    
-                    return data = confirm("Simpan ke database?");
-                }
-                else{   
-                    alert("NPK sudah ada di database silahkan gunakan yang lain!! ");
-                    return data = false;
-                }
-            });
-            return data;
+            return data = confirm("Simpan Perubahan ke database?");
           }
 
         }
 </script>
 <script>
+    window.onload = function getlamakerja(){
+        var tgl = $('#datepicker-datetime-tanggalmasuk').val();
+        var tglangkat = $('#datepicker-datetime-tanggalangkat').val();
+        $('#lamakerja').val(dateAgo(tgl));
+        document.getElementById('lamakerjamasuk').innerHTML = dateAgo(tgl);
+        document.getElementById('lamakerjaangkat').innerHTML = dateAgo(tglangkat);
+    }
+
     function dateAgo(date) {
     var startDate = new Date(date);
     var diffDate = new Date(new Date() - startDate);

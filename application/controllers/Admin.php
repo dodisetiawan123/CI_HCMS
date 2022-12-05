@@ -285,6 +285,92 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function updatedata($npk)
+	{
+		
+		if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
+		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		{
+			// redirect them to the home page because they must be an administrator to view this
+			show_error('You must be an administrator to view this page.');
+		}
+		else
+		{
+
+			$data_md_karyawan = array(
+				'idmd_marital' => $this->input->post('idmd_marital'),
+				'nama' => $this->input->post('nama'),
+				'tempatlahir' => $this->input->post('tempatlahir'),
+				'tgllahir' => $this->input->post('tgllahir'),
+				'jeniskelamin' => $this->input->post('jeniskelamin'),
+				'agama' => $this->input->post('agama'),
+				'nik' => $this->input->post('nik'),
+				'alamatsekarang' => $this->input->post('alamatsekarang'),
+				'nohp' => $this->input->post('nohp'),
+				'email' => $this->input->post('email'),
+				'mulaibekerja' => $this->input->post('mulaibekerja'),
+				'tgldiangkat' => $this->input->post('tgldiangkat')
+			);
+			$data_mk_pendidikan = array(
+				'levelpendidikan' => $this->input->post('levelpendidikan'),
+				'jurusan' => $this->input->post('jurusan'),
+				'institusi' => $this->input->post('institusi'),
+				'tahunlulus' => $this->input->post('tahunlulus')
+			);
+			$data_mk_jabatan = array(
+				'idmd_jabatan' => $this->input->post('idmd_jabatan'),
+				'idmd_bidang' => $this->input->post('idmd_bidang'),
+				'idmd_organisasi' => $this->input->post('idmd_organisasi'),
+				'idmd_level' => $this->input->post('idmd_level'),
+				'tglmulai' => $this->input->post('tglmulai'),
+				'kategorifungsi' => $this->input->post('kategorifungsi'),
+				'statusjabatan' => $this->input->post('statusjabatan')
+			);
+			$data_mk_renumerasi = array(
+				'idmd_grade' => $this->input->post('idmd_grade'),
+				'tgldiangkat' => $this->input->post('tgldiangkatgrade'),
+				'ub_gajipokokkonversi' => $this->input->post('ub_gajipokokkonversi'),
+				'ub_tunjkesejahteraankonversi' => $this->input->post('ub_tunjkesejahteraankonversi'),
+				'ub_tunjperalihanupahpokok' => $this->input->post('ub_tunjperalihanupahpokok'),
+				'ub_tunjperalihanjabatan' => $this->input->post('ub_tunjperalihanjabatan'),
+				'ub_tunjperalihan' => $this->input->post('ub_tunjperalihan'),
+				'ub_tunjjabatan' => $this->input->post('ub_tunjjabatan'),
+				'ub_upahpokokberlaku' => $this->input->post('ub_upahpokokberlaku'),
+				'uf_gajipokokkonversi' => $this->input->post('uf_gajipokokkonversi'),
+				'uf_tunjkesejahteraankonversi' => $this->input->post('uf_tunjkesejahteraankonversi'),
+				'uf_tunjperalihanupahpokok' => $this->input->post('uf_tunjperalihanupahpokok'),
+				'uf_tunjperalihanjabatan' => $this->input->post('uf_tunjperalihanjabatan'),
+				'uf_tunjperalihan' => $this->input->post('uf_tunjperalihan'),
+				'uf_tunjjabatan' => $this->input->post('uf_tunjjabatan'),
+				'uf_upahpokokberlaku' => $this->input->post('uf_upahpokokberlaku'),
+				'uf_tunjpenyesuaian' => $this->input->post('uf_tunjpenyesuaian'),
+				'statuskeaktifan' => $this->input->post('statuskeaktifan'),
+				'statusdirumahkan' => $this->input->post('statusdirumahkan'),
+				'batchdirumahkan' => $this->input->post('batchdirumahkan'),
+				'tgldirumahkan' => $this->input->post('tgldirumahkan'),
+				'aktivitasobsolete' => $this->input->post('aktivitasobsolete'),
+				'aktivitas2022' => $this->input->post('aktivitas2022'),
+				'subaktivitas' => $this->input->post('subaktivitas'),
+				'statuskepegawaian' => $this->input->post('statuskepegawaian'),
+				'tekniknonteknik' => $this->input->post('tekniknonteknik'),
+				'golpend' => $this->input->post('golpend')
+			);
+
+			$this->data_karyawan_model->updatemdkaryawan($data_md_karyawan,$npk);
+			$this->data_karyawan_model->updatemkpendidikan($data_mk_pendidikan,$npk);
+			$this->data_karyawan_model->updatemkjabatan($data_mk_jabatan,$npk);	
+			$this->data_karyawan_model->updatemkrenumerasi($data_mk_renumerasi,$npk);	
+
+            $this->session->set_flashdata('done', 'Data berhasil tersimpan');
+            redirect('admin/detail_karyawan/'.$npk);
+
+		}
+	}
+
 	public function detail_karyawan($npk)
 	{
 		if (empty($npk)) {
