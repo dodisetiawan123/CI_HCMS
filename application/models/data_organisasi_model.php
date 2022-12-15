@@ -23,6 +23,13 @@ class Data_organisasi_model extends CI_Model {
         $this->db->insert('md_organisasi', $data);
         
     }
+
+     public function hapusorganisasi($idmd_organisasi)
+    {
+        $this->db->where('idmd_organisasi', $idmd_organisasi);
+        $this->db->delete('md_organisasi');
+        
+    }
     
      
 }

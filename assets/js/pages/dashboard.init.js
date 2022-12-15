@@ -22,70 +22,9 @@ function getChartColorsArray(chartId) {
 }
 
 
-// 
-// Wallet Balance
-//
-var piechartColors = getChartColorsArray("#wallet-balance");
-var options = {
-    series: [35, 70, 15],
-    chart: {
-        width: 227,
-        height: 227,
-        type: 'pie',
-    },
-    labels: ['Ethereum', 'Bitcoin', 'Litecoin'],
-    colors: piechartColors,
-    stroke: {
-        width: 0,
-    },
-    legend: {
-        show: false
-    },
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-        }
-    }]
-};
-
-var chart = new ApexCharts(document.querySelector("#wallet-balance"), options);
-chart.render();
 
 
-// 
-// Wallet Balance
-//
-var piechartColors = getChartColorsArray("#wallet-balanced");
-var options = {
-    series: [35, 70, 15],
-    chart: {
-        width: 227,
-        height: 227,
-        type: 'pie',
-    },
-    labels: ['Ethereum', 'Bitcoin', 'Litecoin'],
-    colors: piechartColors,
-    stroke: {
-        width: 0,
-    },
-    legend: {
-        show: false
-    },
-    responsive: [{
-        breakpoint: 480,
-        options: {
-            chart: {
-                width: 200
-            },
-        }
-    }]
-};
 
-var chart = new ApexCharts(document.querySelector("#wallet-balanced"), options);
-chart.render();
 
 
 // MAp

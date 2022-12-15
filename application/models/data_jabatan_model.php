@@ -33,6 +33,13 @@ class Data_jabatan_model extends CI_Model {
         $this->db->insert('md_jabatan', $data);
         
     }
+
+     public function hapusjabatan($idmd_jabatan)
+    {
+        $this->db->where('idmd_jabatan', $idmd_jabatan);
+        $this->db->delete('md_jabatan');
+        
+    }
     
      
 }

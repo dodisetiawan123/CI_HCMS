@@ -32,6 +32,13 @@ class Data_bidang_model extends CI_Model {
         $this->db->insert('md_bidang', $data);
         
     }
+
+     public function hapusbidang($idmd_bidang)
+    {
+        $this->db->where('idmd_bidang', $idmd_bidang);
+        $this->db->delete('md_bidang');
+        
+    }
     
      
 }

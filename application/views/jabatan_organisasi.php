@@ -195,8 +195,8 @@
                                             <td width="50"> 
                                                 <div>
                                                     <div class="btn-group btn-group-example" role="group">
-                                                        <button type="button" class="btn btn-sm btn-info w-xs">Edit</i></button>
-                                                        <button onclick="location.href='<?php echo site_url('admin/detail_karyawan') ?>'" type="button" class="btn btn-sm btn-danger w-xs">Hapus</i></button>
+                                                        <button type="button" class="btn btn-sm btn-info w-xs">Detail</i></button>
+                                                        <button onclick="deletejabatan(<?php echo $data->idmd_jabatan ?>)" type="button" class="btn btn-sm btn-danger w-xs">Hapus</i></button>
                                                     </div>
                                                 </div>
                                             </td>
@@ -327,6 +327,14 @@
         });
     });
 });
+
+
+    function deletejabatan(data){
+        var result = confirm("Apakah anda yakin?");
+        if (result) {
+             window.location.href = '<?php echo site_url('admin/hapus_jabatan/') ?>'+data;
+        }
+    }
 </script>
 
 </body>

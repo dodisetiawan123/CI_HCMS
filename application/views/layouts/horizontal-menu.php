@@ -301,7 +301,7 @@
                            
                         </div>
                     </li>
-                     <li class="nav-item dropdown">
+                     <!-- <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
                             <i data-feather="check-circle"></i><span data-key="t-extra-pages">Approval</span>
                             <div class="arrow-down"></div>
@@ -315,7 +315,7 @@
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">jabatan</a>
                             <a href="apps-calendar.php" class="dropdown-item" data-key="t-calendar">Struktur</a>
                         </div>
-                    </li>
+                    </li> -->
 
 
                 </ul>

@@ -8,10 +8,10 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->database();
 		$this->load->library(['ion_auth', 'form_validation']);
-		$this->load->model('dashboard_model');
 		$this->load->model('data_karyawan_model');
 		$this->load->model('data_renumerasi_model');
 		$this->load->model('data_organisasi_model');
+		$this->load->model('data_dashboard_model');
 		$this->load->model('data_bidang_model');
 		$this->load->model('data_bagian_model');
 		$this->load->model('data_jabatan_model');
@@ -35,7 +35,8 @@ class Admin extends CI_Controller {
 		else
 		{
 
-		$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+		//$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+		$this->data['count_gender'] = $this->data_dashboard_model->get_gender();
 		$this->load->view('dashboard', $this->data);
 
 		}
@@ -82,6 +83,16 @@ class Admin extends CI_Controller {
 		
 	}
 
+	public function hapus_satuan($idmd_organisasi)
+	{
+		
+		$this->data_organisasi_model->hapusorganisasi($idmd_organisasi);
+		$this->session->set_flashdata('done', 'Data berhasil diupdate');
+		redirect('admin/satuan_organisasi', 'refresh');
+
+		
+	}
+
 
 
 
@@ -103,6 +114,16 @@ class Admin extends CI_Controller {
 
 		$this->data_bidang_model->insertbidang($data);
 		$this->session->set_flashdata('done', 'Data berhasil tersimpan');
+		redirect('admin/bidang', 'refresh');
+
+		
+	}
+
+	public function hapus_bidang($idmd_bidang)
+	{
+		
+		$this->data_bidang_model->hapusbidang($idmd_bidang);
+		$this->session->set_flashdata('done', 'Data berhasil diupdate');
 		redirect('admin/bidang', 'refresh');
 
 		
@@ -151,6 +172,16 @@ class Admin extends CI_Controller {
 
 		$this->data_jabatan_model->insertjabatan($data);
 		$this->session->set_flashdata('done', 'Data berhasil tersimpan');
+		redirect('admin/jabatan', 'refresh');
+
+		
+	}
+
+	public function hapus_jabatan($idmd_jabatan)
+	{
+		
+		$this->data_jabatan_model->hapusjabatan($idmd_jabatan);
+		$this->session->set_flashdata('done', 'Data berhasil diupdate');
 		redirect('admin/jabatan', 'refresh');
 
 		
@@ -302,6 +333,7 @@ class Admin extends CI_Controller {
 		{
 
 			$data_md_karyawan = array(
+				'npk' => $this->input->post('npk'),
 				'idmd_marital' => $this->input->post('idmd_marital'),
 				'nama' => $this->input->post('nama'),
 				'tempatlahir' => $this->input->post('tempatlahir'),
@@ -316,6 +348,7 @@ class Admin extends CI_Controller {
 				'tgldiangkat' => $this->input->post('tgldiangkat')
 			);
 			$data_mk_pendidikan = array(
+				'npk' => $this->input->post('npk'),
 				'levelpendidikan' => $this->input->post('levelpendidikan'),
 				'jurusan' => $this->input->post('jurusan'),
 				'institusi' => $this->input->post('institusi'),
@@ -323,6 +356,7 @@ class Admin extends CI_Controller {
 			);
 			$data_mk_jabatan = array(
 				'idmd_jabatan' => $this->input->post('idmd_jabatan'),
+				'npk' => $this->input->post('npk'),
 				'idmd_bidang' => $this->input->post('idmd_bidang'),
 				'idmd_organisasi' => $this->input->post('idmd_organisasi'),
 				'idmd_level' => $this->input->post('idmd_level'),
@@ -332,6 +366,7 @@ class Admin extends CI_Controller {
 			);
 			$data_mk_renumerasi = array(
 				'idmd_grade' => $this->input->post('idmd_grade'),
+				'npk' => $this->input->post('npk'),
 				'tgldiangkat' => $this->input->post('tgldiangkatgrade'),
 				'ub_gajipokokkonversi' => $this->input->post('ub_gajipokokkonversi'),
 				'ub_tunjkesejahteraankonversi' => $this->input->post('ub_tunjkesejahteraankonversi'),
@@ -366,7 +401,7 @@ class Admin extends CI_Controller {
 			$this->data_karyawan_model->updatemkrenumerasi($data_mk_renumerasi,$npk);	
 
             $this->session->set_flashdata('done', 'Data berhasil tersimpan');
-            redirect('admin/detail_karyawan/'.$npk);
+            redirect('admin/detail_karyawan/'.$this->input->post('npk'));
 
 		}
 	}
@@ -377,12 +412,64 @@ class Admin extends CI_Controller {
 			echo "Hayo mau ngapainnn";
 			exit;
 		}else{
-			$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+			//$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
 			$this->data['level'] = $this->data_karyawan_model->get_level();
 			$this->data['grade'] = $this->data_karyawan_model->get_grade();
 			$this->data['organisasi'] = $this->data_karyawan_model->get_organisasi();
 			$this->data['personaldata'] = $this->data_karyawan_model->getpersonaldata($npk);
 			$this->load->view('detail_karyawan', $this->data);
+		}
+
+		
+	}
+
+	
+
+	public function kehadiran_karyawan($npk)
+	{
+		if (empty($npk)) {
+			echo "Hayo mau ngapainnn";
+			exit;
+		}else{
+			$this->data['personaldata'] = $this->data_karyawan_model->getpersonaldata($npk);
+			$this->load->view('kehadiran_karyawan', $this->data);
+		}
+
+		
+	}
+
+	public function uploadfoto($npk)
+	{
+		if (empty($npk)) {
+			echo "Hayo mau ngapainnn";
+			exit;
+		}else{
+			
+			$config['upload_path']          = './image/';
+            $config['allowed_types']        = 'jpg|jpeg';
+            $config['encrypt_name']         = TRUE;
+            $config['max_size']             = 1000;
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('userfile'))
+            {
+                    $error = array('error' => $this->upload->display_errors());
+                    $this->session->set_flashdata('false', 'Data gagal tersimpan');
+                    redirect('admin/detail_karyawan/'.$npk);
+            }
+            else
+            {
+                    $data = $this->upload->data();
+                    $additional_data = array(
+                        'file_foto'  => $data['file_name']
+                    );
+                	$this->data_karyawan_model->insert_filename($additional_data,$npk);
+                	$this->session->set_flashdata('done', 'Data berhasil tersimpan');
+                    redirect('admin/detail_karyawan/'.$npk);
+            }
 		}
 
 		

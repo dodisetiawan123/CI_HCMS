@@ -63,6 +63,76 @@
                     <div class="col-12">
                         <div class="card">
                             <div>
+                                    <!--  Extra Large modal example -->
+                                    <div class="modal fade modalfoto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-m">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalfoto">Form Upload Foto</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                     <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="card">
+                                                                <div class="card-body">
+
+                                                                    <div id="progrss-foto" class="twitter-bs-wizard">
+                                                                        <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
+                                                                            <li class="nav-item">
+                                                                                <div class="mx-auto">
+                                                                                    <img src="<?php echo base_url('image/'.$personaldata['file_foto']) ?>" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                                                                </div>
+                                                                            </li>
+                                                                           
+                                                                        </ul>
+                                                                        <!-- wizard-nav -->
+
+                                                                        <div class="tab-content twitter-bs-wizard-tab-content">
+                                                                            <div class="tab-pane active" id="progress-foto">
+                                                                                <div class="text-center mb-4">
+                                                                                    <h5>Ganti Foto Profil</h5>
+                                                                                    <p class="card-title-desc">Upload foto karyawan</p>
+                                                                                </div>
+                                                                                <form class="needs-validation" enctype="multipart/form-data" accept-charset="utf-8" method="post" action="<?php echo site_url('admin/uploadfoto/'.$personaldata['npk']) ?>" novalidate>
+                                                                                    <div class="row">
+                                                                                        <div class="col-lg-12">
+                                                                                            <div class="mb-3">
+                                                                                                <label for="validationTooltip03">Pilih foto</label>
+                                                                                                <div class="mb-3">
+                                                                                                  <input class="form-control" type="file" name="userfile" id="formFile" required>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        
+                                                                                    </div>
+
+                                                                                  
+                                                                                
+                                                                                <ul class="pager wizard twitter-bs-wizard-pager-link">
+                                                                                        
+                                                                                        <li class="float-end"><input type="submit" value="Simpan" class="btn btn-primary" /></li>
+                                                                                </ul>
+                                                                                </form>
+                                                                          
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end card body -->
+                                                            </div>
+                                                            <!-- end card -->
+                                                        </div>
+                                                        <!-- end col -->
+                                                    </div>
+                                                    <!-- end row -->
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                </div>
+
+
+                            <div>
                                      <!--  Extra Large modal example -->
                                     <div class="modal fade bs-example-modal-xl" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-xl">
@@ -156,7 +226,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label for="progresspill-npk">NPK</label>
-                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8" value="<?php echo $personaldata['npk'] ?>" readonly>
+                                                                                                <input type="text" class="form-control" id="npk" name="npk" placeholder="NPK" maxlength="8" value="<?php echo $personaldata['npk'] ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -171,7 +241,7 @@
                                                                                         <div class="col-lg-6">
                                                                                             <div class="mb-3">
                                                                                                 <label class="form-label">Tanggal Lahir</label>
-                                                                                                <input type="text" class="form-control" id="datepicker-datetime-tanggallahir" name="tgllahir" placeholder="Tanggal lahir karyawan" value="<?php echo $personaldata['tgllahir'] ?>">
+                                                                                                <input type="text" class="form-control" id="datepicker-datetime-tanggallahir" name="tgllahir" placeholder="Tanggal lahir karyawan" value="<?php if($personaldata['tgllahir']=='0000-00-00'){ echo ''; }else{ echo $personaldata['tgllahir']; }   ?>">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -338,7 +408,7 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">Tanggal Masuk</label>
-                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk" value="<?php echo $personaldata['mulaibekerja'] ?>">
+                                                                                                    <input type="text" class="form-control" name="mulaibekerja" id="datepicker-datetime-tanggalmasuk" placeholder="Tanggal Masuk" value="<?php if($personaldata['mulaibekerja']=='0000-00-00'){ echo ''; }else{ echo $personaldata['mulaibekerja'];}   ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-4">
@@ -351,7 +421,7 @@
                                                                                             <div class="col-lg-4">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-pengangkatan">Tanggal Pengangkatan</label>
-                                                                                                    <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan" value="<?php echo $personaldata['tgldiangkat'] ?>">
+                                                                                                    <input type="text" class="form-control" name="tgldiangkat" id="datepicker-datetime-tanggalangkat" placeholder="Tanggal Pengangkatan" value="<?php if($personaldata['tgldiangkat']=='0000-00-00'){ echo ''; }else{ echo $personaldata['tgldiangkat'];}   ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -434,7 +504,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-declaration-input" class="form-label">TMT Jabatan</label>
-                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan" value="<?php echo $personaldata['tglmulai'] ?>">
+                                                                                                    <input type="text" class="form-control" id="datepicker-datetime-tmtjabatan" name="tglmulai" placeholder="TMT Jabatan" value="<?php if($personaldata['tglmulai']=='0000-00-00'){ echo ''; }else{ echo $personaldata['tglmulai'];}   ?>">
                                                                                                 </div>
                                                                                             </div>
 
@@ -483,7 +553,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-tanggalmasuk">TMT Grade</label>
-                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade" value="<?php echo $personaldata['tgldiangkatgrade'] ?>">
+                                                                                                    <input type="text" class="form-control" id="tgldiangkat" placeholder="TMT Grade" name="tgldiangkatgrade" value="<?php if($personaldata['tgldiangkatgrade']=='0000-00-00'){ echo ''; }else{ echo $personaldata['tgldiangkatgrade'];}   ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -672,13 +742,13 @@
                                                                                                         <option value="I" <?php if ($personaldata['batchdirumahkan']=='I'): ?>
                                                                                                           selected  
                                                                                                         <?php endif ?>>I</option>
-                                                                                                        <option value="II" <?php if ($personaldata['statusdirumahkan']=='II'): ?>
+                                                                                                        <option value="II" <?php if ($personaldata['batchdirumahkan']=='II'): ?>
                                                                                                           selected  
                                                                                                         <?php endif ?>>II</option>
-                                                                                                        <option value="III" <?php if ($personaldata['statusdirumahkan']=='III'): ?>
+                                                                                                        <option value="III" <?php if ($personaldata['batchdirumahkan']=='III'): ?>
                                                                                                           selected  
                                                                                                         <?php endif ?>>III</option>
-                                                                                                        <option value="IIII" <?php if ($personaldata['statusdirumahkan']=='IIII'): ?>
+                                                                                                        <option value="IIII" <?php if ($personaldata['batchdirumahkan']=='IIII'): ?>
                                                                                                           selected  
                                                                                                         <?php endif ?>>IIII</option>
                                                                                                     </select>
@@ -687,7 +757,7 @@
                                                                                             <div class="col-lg-6">
                                                                                                 <div class="mb-3">
                                                                                                     <label for="progresspill-pengangkatan">Tanggal Dirumahkan atau Aktif Kembali</label>
-                                                                                                    <input type="text" class="form-control" id="tanggal-dirumahkan" name="tgldirumahkan" placeholder="Isi tanggal di rumahkan atau Aktif kembali" value="<?php echo $personaldata['tgldirumahkan'] ?>">
+                                                                                                    <input type="text" class="form-control" id="tanggal-dirumahkan" name="tgldirumahkan" placeholder="Isi tanggal di rumahkan atau Aktif kembali" value="<?php if($personaldata['tgldirumahkan']=='0000-00-00'){ echo ''; }else{ echo $personaldata['tgldirumahkan'];}   ?>">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-lg-6">
@@ -802,17 +872,14 @@
                             <div class="card text-center">
                             <div class="card-body">
                                 <div class="dropdown text-end">
-                                    <a class="text-muted dropdown-toggle font-size-16" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true">
-                                        <i class="bx bx-dots-horizontal-rounded"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu dropdown-menu-end">
-                                        <a class="dropdown-item" href="#">Ganti foto</a>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="mx-auto mb-4">
-                                    <img src="<?php     echo base_url('assets/images/users/avatar-2.jpg') ?>" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target=".modalfoto">
+                                        <img src="<?php echo base_url('image/'.$personaldata['file_foto']) ?>" alt="" class="avatar-xl rounded-circle img-thumbnail">
+                                    </a>
+                                    
                                 </div>
                                 <h5 class="font-size-16 mb-1"><a href="#" class="text-dark"><?php echo $personaldata['nama']; ?></a></h5>
                                 <p class="text-muted mb-2"><?php echo $personaldata['namajabatan']; ?></p>
@@ -820,9 +887,9 @@
                             </div>
 
                             <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-outline-light text-truncate"><i class="uil uil-user me-1"></i> Transfer</button>
-                                <button type="button" class="btn btn-outline-light text-truncate"><i class="uil uil-envelope-alt me-1"></i> Resign</button>
-                                <button type="button" class="btn btn-outline-light text-truncate"><i class="uil uil-envelope-alt me-1"></i> Delete</button>
+                                <button type="button" class="btn btn-outline-primary text-truncate"><i class="uil uil-user me-1"></i> Transfer</button>
+                                <button type="button" class="btn btn-outline-primary text-truncate"><i class="uil uil-envelope-alt me-1"></i> Resign</button>
+                                <button type="button" class="btn btn-outline-danger text-truncate"><i class="uil uil-envelope-alt me-1"></i> Delete</button>
 
                             </div>
                         </div>
@@ -838,7 +905,7 @@
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                            <div class="list-group" id="list-tab" role="tablist">
-                                              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Attendance</a>
+                                              <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="<?php echo site_url('Admin/kehadiran_karyawan/'.$personaldata['npk']) ?>" role="tab" aria-controls="home">Attendance</a>
                                               <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Timeoff</a>
                                               <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Overtime</a>
                                             </div>
@@ -895,7 +962,7 @@
                                     <div class="col-sm-auto order-1 order-sm-2">
                                         <div class="d-flex align-items-start justify-content-end gap-2">
                                             <div>
-                                                <button type="button" class="btn btn-light btn-label" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Update Data</button>
+                                                <button type="button" class="btn btn-primary btn-label" data-bs-toggle="modal" data-bs-target=".bs-example-modal-xl"><i class="bx bx-user-circle label-icon"></i> Update Data</button>
                                             </div>
                                             <div>
                                                 <div class="dropdown">
@@ -1948,16 +2015,29 @@
             }
 
             );
-
     }
     
     function validateForm() {
           let x = document.forms["karyawan"]["npk"].value;
+          let y = <?php echo $personaldata['npk']; ?>;
           if (x == "") {
             alert("Formulir NPK harus di isi..!!");
             return false;
-          }else{
-            return data = confirm("Simpan Perubahan ke database?");
+            }else if (x == y) {
+                return data = confirm("Simpan perubahan ke database?");
+            }else{
+                checknpk(function(output){
+
+                if (!$.trim(output)){   
+                    
+                    return data = confirm("Simpan perubahan ke database?");
+                }
+                else{   
+                    alert("NPK sudah ada di database silahkan gunakan yang lain!! ");
+                    return data = false;
+                }
+            });
+            return data;
           }
 
         }
@@ -2029,6 +2109,20 @@
             position: 'top-midle',
             icon: 'success',
             title: 'Data berhasil di simpan',
+            showConfirmButton: false,
+            timer: 1500
+            })
+        });
+    <?php } ?>
+</script>
+
+<script>
+     <?php if ($this->session->flashdata('false')) {?>
+       $(window).on('load', function() {
+            Swal.fire({
+            position: 'top-midle',
+            icon: 'error',
+            title: 'Data gagal di simpan',
             showConfirmButton: false,
             timer: 1500
             })

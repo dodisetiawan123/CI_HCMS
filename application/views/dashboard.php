@@ -72,23 +72,18 @@
 
                                         <div class="row align-items-center">
                                             <div class="col-sm">
-                                                <div id="wallet-balance" data-colors='["#777aca", "#5156be", "#a8aada"]' class="apex-charts"></div>
+                                                <div id="wallet-balance" data-colors='["#a8aada","#5156be"]' class="apex-charts"></div>
                                             </div>
                                             <div class="col-sm align-self-center">
                                                  <div class="mt-4 mt-sm-0">
                                                     <div>
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-success"></i> Laki Laki</p>
-                                                        <h6>1000 Orang</h6>
+                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> Laki-laki</p>
+                                                        <h6><?php echo $count_gender['male_cnt']; ?> Orang</h6>
                                                     </div>
     
                                                     <div class="mt-4 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-primary"></i> Perempuan</p>
-                                                        <h6>200 Orang</h6>
-                                                    </div>
-    
-                                                    <div class="mt-4 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-info"></i> Lain-lain</p>
-                                                        <h6>100 Orang<h6>
+                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #a8aada"></i> Perempuan</p>
+                                                        <h6><?php echo $count_gender['female_cnt']; ?> Orang</h6>
                                                     </div>
                                                 </div>
                                             </div>
@@ -116,36 +111,46 @@
                                             </div>
                                         </div>
 
-                                        <div class="row align-items-center">
-                                            <div class="col-sm-6">
-                                                <div id="wallet-balanced" data-colors='["#777aca", "#5156be", "#a8aada"]' class="apex-charts"></div>
+                                         <div class="row align-items-center">
+                                            <div class="col-sm">
+                                                <div id="pendidikan" data-colors='["#a8aada","#5156be"]' class="apex-charts"></div>
                                             </div>
                                             <div class="col-sm align-self-center">
-                                                <div class="mt-4 mt-sm-0">
+                                                 <div class="mt-4 mt-sm-0">
+
                                                     <div>
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-success"></i> SD = <strong>10</strong></p>
-                                                    </div>
-    
-                                                    <div class="mt-1 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-primary"></i> SMP = <strong>15</strong></p>
-                                                    </div>
-    
-                                                    <div class="mt-1 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-info"></i> SMA = <strong>13</strong></p>
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr>
+                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SD : <?php echo $count_gender['male_cnt']; ?></p></td>
+                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMP : <?php echo $count_gender['male_cnt']; ?></p></td>  
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMA : <?php echo $count_gender['male_cnt']; ?></p></td>
+                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMK : <?php echo $count_gender['male_cnt']; ?></p></td>  
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D1 : <?php echo $count_gender['male_cnt']; ?></p></td>
+                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D2 : <?php echo $count_gender['male_cnt']; ?></p></td>  
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D3 : <?php echo $count_gender['male_cnt']; ?></p></td>
+                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D4 : <?php echo $count_gender['male_cnt']; ?></p></td>  
+                                                                </tr>
+                                                                <tr>
+                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> S1 : <?php echo $count_gender['male_cnt']; ?></p></td>
+                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> S2 : <?php echo $count_gender['male_cnt']; ?></p></td>  
+                                                                </tr>
+                                                                
+                                                            </tbody>
+                                                            
+                                                        </table>
+                                                        
+
                                                     </div>
 
-                                                    <div class="mt-1 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-info"></i> D1 = <strong>13</strong></p>
-                                                    </div>
-
-                                                    <div class="mt-1 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2 text-info"></i> D2 = <strong>10</strong></p>
-                                                    </div>
-
-                                                    
                                                 </div>
                                             </div>
-                                           
                                         </div>
                                     </div>
                                 </div>
@@ -798,6 +803,70 @@
 
 <!-- App js -->
 <script src="<?php echo base_url('assets/js/app.js') ?>"></script>
+
+<script type="text/javascript">
+
+// 
+// Wallet Balance
+//
+var piechartColors = getChartColorsArray("#wallet-balance");
+var options = {
+    series: [<?php echo $count_gender['female_cnt']; ?>,<?php echo $count_gender['male_cnt']; ?>],
+    chart: {
+        width: 227,
+        height: 227,
+        type: 'pie',
+    },
+    labels: ['Perempuan','Laki-laki'],
+    colors: piechartColors,
+    stroke: {
+        width: 0,
+    },
+    legend: {
+        show: false
+    },
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+        }
+    }]
+};
+
+var chart = new ApexCharts(document.querySelector("#wallet-balance"), options);
+chart.render();
+
+var piechartColors = getChartColorsArray("#pendidikan");
+var options = {
+    series: [<?php echo $count_gender['female_cnt']; ?>,<?php echo $count_gender['male_cnt']; ?>],
+    chart: {
+        width: 227,
+        height: 227,
+        type: 'pie',
+    },
+    labels: ['Perempuan','Laki-laki'],
+    colors: piechartColors,
+    stroke: {
+        width: 0,
+    },
+    legend: {
+        show: false
+    },
+    responsive: [{
+        breakpoint: 480,
+        options: {
+            chart: {
+                width: 200
+            },
+        }
+    }]
+};
+
+var chart = new ApexCharts(document.querySelector("#pendidikan"), options);
+chart.render();
+</script>
 
 </body>
 
