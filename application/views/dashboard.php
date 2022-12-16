@@ -101,7 +101,7 @@
                                     <!-- card body -->
                                     <div class="card-body">
                                         <div class="d-flex flex-wrap align-items-center mb-4">
-                                            <h5 class="card-title me-2">Grafik Tenaga Kerja Berdasarkan Tingkat Pendidikan</h5>
+                                            <h5 class="card-title me-2">Grafik Tenaga Kerja berdasarkan Pendidikan</h5>
                                             <div class="ms-auto">
                                                 <div>
                                                     <button type="button" class="btn btn-soft-secondary btn-sm">
@@ -117,38 +117,15 @@
                                             </div>
                                             <div class="col-sm align-self-center">
                                                  <div class="mt-4 mt-sm-0">
-
                                                     <div>
-                                                        <table class="table">
-                                                            <tbody>
-                                                                <tr>
-                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SD : <?php echo $count_gender['male_cnt']; ?></p></td>
-                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMP : <?php echo $count_gender['male_cnt']; ?></p></td>  
-                                                                </tr>
-                                                                <tr>
-                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMA : <?php echo $count_gender['male_cnt']; ?></p></td>
-                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> SMK : <?php echo $count_gender['male_cnt']; ?></p></td>  
-                                                                </tr>
-                                                                <tr>
-                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D1 : <?php echo $count_gender['male_cnt']; ?></p></td>
-                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D2 : <?php echo $count_gender['male_cnt']; ?></p></td>  
-                                                                </tr>
-                                                                <tr>
-                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D3 : <?php echo $count_gender['male_cnt']; ?></p></td>
-                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> D4 : <?php echo $count_gender['male_cnt']; ?></p></td>  
-                                                                </tr>
-                                                                <tr>
-                                                                  <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> S1 : <?php echo $count_gender['male_cnt']; ?></p></td>
-                                                                <td><p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> S2 : <?php echo $count_gender['male_cnt']; ?></p></td>  
-                                                                </tr>
-                                                                
-                                                            </tbody>
-                                                            
-                                                        </table>
-                                                        
-
+                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> Laki-laki</p>
+                                                        <h6><?php echo $count_gender['male_cnt']; ?> Orang</h6>
                                                     </div>
-
+    
+                                                    <div class="mt-4 pt-2">
+                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #a8aada"></i> Perempuan</p>
+                                                        <h6><?php echo $count_gender['female_cnt']; ?> Orang</h6>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

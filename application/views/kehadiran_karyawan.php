@@ -186,7 +186,7 @@
         "processing": true,
         "serverSide": false,
         "ajax": {
-            "url": "http://localhost/API/index.php/karyawan/getdata/"+valnpk,
+            "url": "http://192.168.3.135/API/index.php/karyawan/getdata/"+valnpk,
             "type": "POST",
             'data': {
                startdate: startdate,
@@ -236,7 +236,7 @@
         "processing": true,
         "serverSide": false,
         "ajax": {
-            "url": "http://localhost/API/index.php/karyawan/getdata/"+valnpk,
+            "url": "http://192.168.3.135/API/index.php/karyawan/getdata/"+valnpk,
             "type": "POST",
             'data': {
                startdate: start,

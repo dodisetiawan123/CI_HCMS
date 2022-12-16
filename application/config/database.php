@@ -75,10 +75,15 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	// 'hostname' => 'localhost',
+	// 'username' => 'root',
+	// 'password' => 'SapDevel@2020',
+	// 'database' => 'hcms_db',
+	// 'dbdriver' => 'mysqli',
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'HCMS_DB',
+	'database' => 'hcms_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
