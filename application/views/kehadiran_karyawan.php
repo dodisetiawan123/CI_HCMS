@@ -69,7 +69,7 @@
 
                                     <div class="row gx-3 gy-2 align-items-center">
 
-                                         <div class="col-sm-3">
+                                         <div class="col-sm-4">
                                             <label class="visually-hidden" for="specificSizeInputGroupUsername">Bulan</label>
                                             <div class="input-group">
                                                 <div class="input-group-text">
@@ -78,7 +78,7 @@
                                                 <input type="datetime-local" type="text" class="form-control" id="datepicker-range" placeholder="Pilih range tanggal">
                                             </div>
                                         </div>
-                                        <div class="col-sm-1">
+                                        <div class="col-sm-2">
                                             <button type="button" class="btn btn-primary" onclick="search()">Cari data</button>
                                         </div>
                                     </div>

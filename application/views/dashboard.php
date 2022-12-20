@@ -72,7 +72,7 @@
 
                                         <div class="row align-items-center">
                                             <div class="col-sm">
-                                                <div id="wallet-balance" data-colors='["#a8aada","#5156be"]' class="apex-charts"></div>
+                                                <div id="wallet-balance" data-colors='["#e4edf5","#5156be"]' class="apex-charts"></div>
                                             </div>
                                             <div class="col-sm align-self-center">
                                                  <div class="mt-4 mt-sm-0">
@@ -82,7 +82,7 @@
                                                     </div>
     
                                                     <div class="mt-4 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #a8aada"></i> Perempuan</p>
+                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #e4edf5"></i> Perempuan</p>
                                                         <h6><?php echo $count_gender['female_cnt']; ?> Orang</h6>
                                                     </div>
                                                 </div>
@@ -113,20 +113,7 @@
 
                                          <div class="row align-items-center">
                                             <div class="col-sm">
-                                                <div id="pendidikan" data-colors='["#a8aada","#5156be"]' class="apex-charts"></div>
-                                            </div>
-                                            <div class="col-sm align-self-center">
-                                                 <div class="mt-4 mt-sm-0">
-                                                    <div>
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #5156be"></i> Laki-laki</p>
-                                                        <h6><?php echo $count_gender['male_cnt']; ?> Orang</h6>
-                                                    </div>
-    
-                                                    <div class="mt-4 pt-2">
-                                                        <p class="mb-2"><i class="mdi mdi-circle align-middle font-size-10 me-2" style="color: #a8aada"></i> Perempuan</p>
-                                                        <h6><?php echo $count_gender['female_cnt']; ?> Orang</h6>
-                                                    </div>
-                                                </div>
+                                                <div id="pendidikan" data-colors='["#0cb16f", "#31d392", "#8ff7cd", "#e5fff4", "#f3f3ff","#bcbff9","#7a80ff","#4b52f7","#040dc3","#050a83"]' class="apex-charts"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -817,20 +804,25 @@ chart.render();
 
 var piechartColors = getChartColorsArray("#pendidikan");
 var options = {
-    series: [<?php echo $count_gender['female_cnt']; ?>,<?php echo $count_gender['male_cnt']; ?>],
+    series: [<?php echo $count_pendidikan['sd_cnt']; ?>,<?php echo $count_pendidikan['smp_cnt']; ?>, <?php echo $count_pendidikan['sma_cnt']; ?>,<?php echo $count_pendidikan['smk_cnt']; ?>,<?php echo $count_pendidikan['d1_cnt']; ?>,<?php echo $count_pendidikan['d2_cnt']; ?>,<?php echo $count_pendidikan['d3_cnt']; ?>,<?php echo $count_pendidikan['d4_cnt']; ?>,<?php echo $count_pendidikan['s1_cnt']; ?>,<?php echo $count_pendidikan['s2_cnt']; ?>],
     chart: {
-        width: 227,
-        height: 227,
+        height: 300,
         type: 'pie',
     },
-    labels: ['Perempuan','Laki-laki'],
+    labels: ['SD','SMP','SMA','SMK','D1','D2','D3','D4','S1','S2'],
     colors: piechartColors,
     stroke: {
         width: 0,
     },
     legend: {
-        show: false
-    },
+      show: true,
+      position: 'bottom',
+      horizontalAlign: 'center',
+      verticalAlign: 'middle',
+      floating: false,
+      fontSize: '14px',
+      offsetX: 0,
+  },
     responsive: [{
         breakpoint: 480,
         options: {

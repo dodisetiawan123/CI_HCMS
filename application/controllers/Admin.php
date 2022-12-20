@@ -36,6 +36,7 @@ class Admin extends CI_Controller {
 		{
 
 		//$this->data['karyawan'] = $this->data_karyawan_model->get_karyawan();
+		$this->data['count_pendidikan'] = $this->data_dashboard_model->get_pendidikan();
 		$this->data['count_gender'] = $this->data_dashboard_model->get_gender();
 		$this->load->view('dashboard', $this->data);
 
